@@ -27,8 +27,8 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const filterAuthorsForYear = (years) =>
     authorsData.filter((author) => author.year === years);
 
-    const handleTickClick = useCallback((years, isClicked) => {
-      console.log('Handle Tick Click:', years);
+    const handleTickClick = useCallback((years) => {
+      console.log('Handle Tick Click Callback:', years);
       setClickedYear((prevYear) => (prevYear === years ? null : years));
     }, []);
 
@@ -57,23 +57,18 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
 // Handle the selected author
 useEffect(() => {
   if (selectedAuthor !== null) {
+    console.log(selectedAuthor)
     const author = authorsData.find((author) => author.name === selectedAuthor);
+    console.log(author)
     if (author && author.year !== undefined) {
       const authorYearIndex = Math.floor((author.year - START_YEAR_STATE) / YEAR_INTERVAL);
       setScrollX(-authorYearIndex * TICK_DISTANCE + 500);
       // Call  function directly with the author's year index
       handleTickClick(author.year);
+      console.log("handle the selected author author.year:"+ author.year)
     }
   }
 }, [selectedAuthor, START_YEAR_STATE, handleTickClick]);
-
-// Chiamare handleTickClick dopo l'aggiornamento di CLICKED_YEAR
-useEffect(() => {
-  if (CLICKED_YEAR !== null) {
-    handleTickClick(CLICKED_YEAR);
-    console.log("clicked year" + CLICKED_YEAR)
-  }
-}, [CLICKED_YEAR, handleTickClick]);
 
 
   // Calculate the current year and set today's tick
