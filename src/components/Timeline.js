@@ -71,7 +71,7 @@ useEffect(() => {
       handleTickClick(author.year);
     }
   }
-}, []);
+}, [selectedAuthor, START_YEAR_STATE, handleTickClick]);
 
 
   // Calculate the current year and set today's tick
