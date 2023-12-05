@@ -81,12 +81,9 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   };
 
   useEffect(() => {
-    const handleMouseMove = (event) => {
-      if (DRAG_START_X !== null) {
-        const delta = event.clientX - DRAG_START_X;
-        setScrollX((prevScrollX) => prevScrollX + delta);
-        setDragStartX(event.clientX);
-      }
+    const handleMouseUp = () => {
+      setDragStartX(null);
+      timelineRef.current.style.cursor = 'grab';
     };
   
     document.addEventListener('mousemove', handleMouseMove);
