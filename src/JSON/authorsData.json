@@ -1,0 +1,513 @@
+[
+  {
+    "name": "Imhotep",
+    "category": "Filosofia",
+    "specialized": "Metafisica",
+    "year": -2700,
+    "decade": -2700,
+    "description": "Gli studiosi egizi come Imhotep contribuiscono ai primi studi sulla psiche umana, collegando mente e corpo.",
+    "image": "imhotep.png",
+    "works": [
+      "Il Libro delle Visioni",
+      "Ricerca sulla Dualità Mente-Corpo"
+    ]
+  },
+  {
+    "name": "Socrate",
+    "category": "Filosofia",
+    "specialized": null,
+    "year": -399,
+    "decade": -390,
+    "description": "Socrate, padre della filosofia occidentale, promuove il metodo dialettico nell'indagine filosofica.",
+    "image": "socrate.png",
+    "works": [
+      "Dialoghi Socratici",
+      "La Conoscenza come Virtù"
+    ]
+  },
+  {
+    "name": "Platone",
+    "category": "Filosofia",
+    "specialized": null,
+    "year": -427,
+    "decade": -420,
+    "description": "Platone, allievo di Socrate, sviluppa la teoria delle idee e influisce sulla filosofia della mente e dell'anima.",
+    "image": "platone.png",
+    "works": [
+      "La Repubblica",
+      "Fedro"
+    ]
+  },
+  {
+    "name": "Aristotele",
+    "category": "Filosofia",
+    "specialized": null,
+    "year": -384,
+    "decade": -380,
+    "description": "Aristotele, filosofo e scienziato, esplora la psiche umana nelle sue opere filosofiche e scientifiche.",
+    "image": "aristotele.png",
+    "works": [
+      "Etica Nicomachea",
+      "Analisi della Percezione"
+    ]
+  },
+  {
+    "name": "Hippocrates",
+    "category": "Medicina",
+    "specialized": null,
+    "year": -460,
+    "decade": -460,
+    "description": "Ippocrate, noto come il padre della medicina, introduce concetti psicologici legati alla salute mentale.",
+    "image": "ippocrate.png",
+    "works": [
+      "Aforismi sulla Mente",
+      "Trattato sull'Equilibrio Psicofisico"
+    ]
+  },
+  {
+    "name": "Galeno",
+    "category": "Medicina",
+    "specialized": null,
+    "year": 129,
+    "decade": 120,
+    "description": "Galen, medico greco-romano, contribuisce alla comprensione del sistema nervoso e delle funzioni cognitive.",
+    "image": "galeno.png",
+    "works": [
+      "Istologia del Sistema Nervoso",
+      "Teoria delle Facoltà Cognitive"
+    ]
+  },
+  {
+    "name": "Johannes Kepler",
+    "category": "Filosofia della Scienza",
+    "specialized": null,
+    "year": 1571,
+    "decade": 1570,
+    "description": "Johannes Kepler, astronomo e filosofo, applica il metodo scientifico alla comprensione del sistema nervoso e delle percezioni sensoriali.",
+    "image": "keplero.png",
+    "works": [
+      "Astronomia Nuova",
+      "Harmonices Mundi"
+    ]
+  },
+  {
+    "name": "René Descartes",
+    "category": "Filosofia",
+    "specialized": "Metafisica",
+    "year": 1596,
+    "decade": 1590,
+    "description": "René Descartes, filosofo e scienziato, contribuisce alla comprensione della mente e del corpo attraverso il dualismo.",
+    "image": "cartesio.png",
+    "works": [
+      "Meditazioni Metafisiche",
+      "Trattato sull'Anima e il Corpo"
+    ]
+  },
+  {
+    "name": "John Locke",
+    "category": "Filosofia",
+    "specialized": null,
+    "year": 1632,
+    "decade": 1630,
+    "description": "John Locke, filosofo empirista, influisce sulla psicologia empirica con il suo concetto di tabula rasa.",
+    "image": "locke.png",
+    "works": [
+      "Saggio sull'Intelletto Umano",
+      "Esplorazioni sulla Formazione delle Idee"
+    ]
+  },
+  {
+    "name": "Immanuel Kant",
+    "category": "Filosofia",
+    "specialized": null,
+    "year": 1724,
+    "decade": 1720,
+    "description": "Immanuel Kant, filosofo illuminista, influisce sullo sviluppo della psicologia teorica con la sua critica della ragion pura.",
+    "image": "kant.png",
+    "works": [
+      "Critica della Ragion Pura",
+      "Fondamenti della Metafisica dei Costumi"
+    ]
+  },
+  {
+    "name": "Hermann von Helmholtz",
+    "category": "Neuroscienze",
+    "specialized": null,
+    "year": 1821,
+    "decade": 1820,
+    "description": "Hermann von Helmholtz, fisiologo e fisico, contribuisce alle neuroscienze attraverso i suoi studi sulla percezione sensoriale e la fisiologia nervosa.",
+    "image": "helmholtz.png",
+    "works": [
+      "Trattato sull'ottica",
+      "Fisiologia Sensoriale"
+    ]
+  },
+  {
+    "name": "Paul Broca",
+    "category": "Neuroscienze",
+    "specialized": null,
+    "year": 1824,
+    "decade": 1820,
+    "description": "Paul Broca, medico e antropologo, scopre l'area di Broca nel cervello, collegando la neuroscienza all'linguaggio.",
+    "image": "broca.png",
+    "works": [
+      "Localizzazione delle Funzioni Cerebrali",
+      "Afasia di Broca"
+    ]
+  },
+  {
+    "name": "Wilhelm Wundt",
+    "category": "Psicologia",
+    "specialized": "Strutturalismo",
+    "year": 1832,
+    "decade": 1830,
+    "description": "Wilhelm Wundt, fondatore del primo laboratorio di psicologia, avvia il movimento strutturalista studiando la struttura della coscienza.",
+    "image": "wundt.png",
+    "works": [
+      "Principi di Psicologia Fisiologica",
+      "Ricerca sulla Coscienza Elementare"
+    ]
+  },
+
+  {
+    "name": "William James",
+    "category": "Psicologia",
+    "specialized": "Funzionalismo",
+    "year": 1842,
+    "decade": 1840,
+    "description": "William James, padre della psicologia americana, promuove l'approccio funzionalista concentrandosi su come la mente funziona nella vita di tutti i giorni.",
+    "image": "james.png",
+    "works": [
+      "Principi di Psicologia",
+      "Esplorazioni sulla Funzione della Coscienza"
+    ]
+  },
+  {
+    "name": "Camillo Golgi",
+    "category": "Neuroscienze",
+    "specialized": null,
+    "year": 1843,
+    "decade": 1845,
+    "description": "Camillo Golgi, medico e fisiologo italiano, sviluppa la tecnica della colorazione argento e contribuisce alla conoscenza dell'anatomia del sistema nervoso.",
+    "image": "golgi.png",
+    "works": [
+      "La Dottrina di Golgi",
+      "Colorazione Argento nel Sistema Nervoso"
+    ]
+  },
+  {
+    "name": "Ivan Petrovich Pavlov",
+    "category": "Fisiologia",
+    "specialized": null,
+    "year": 1849,
+    "decade": 1850,
+    "description": "Ivan Petrovich Pavlov, fisiologo russo, contribuisce allo studio delle basi fisiologiche del comportamento attraverso i suoi esperimenti sul condizionamento classico.",
+    "image": "pavlov.png",
+    "works": [
+      "Condizionamento Classico",
+      "Fisiologia della Digestione"
+    ]
+  },
+  {
+    "name": "Sigmund Freud",
+    "category": "Psicoanalisi",
+    "specialized": "Freudiana",
+    "year": 1856,
+    "decade": 1855,
+    "description": "Sigmund Freud, fondatore della psicoanalisi, rivoluziona la comprensione dell'inconscio e delle dinamiche psichiche profonde.",
+    "image": "freud.png",
+    "works": [
+      "Interpretazione dei Sogni",
+      "Studio delle Pulsioni"
+    ]
+  },
+  {
+    "name": "John B. Watson",
+    "category": "Psicologia",
+    "specialized": "Comportamentismo",
+    "year": 1878,
+    "decade": 1880,
+    "description": "John B. Watson, padre del comportamentismo, sottolinea l'importanza dell'osservazione comportamentale nello studio della mente.",
+    "image": "watson.png",
+    "works": [
+      "Psicologia dal Punto di Vista Comportamentale",
+      "Ricerca sull'Apprendimento"
+    ]
+  },
+  {
+    "name": "Jean Piaget",
+    "category": "Psicologia",
+    "specialized": "Cognitivismo",
+    "year": 1896,
+    "decade": 1895,
+    "description": "Jean Piaget, psicologo svizzero, sviluppa la teoria dello sviluppo cognitivo nell'infanzia.",
+    "image": "piaget.png",
+    "works": [
+      "La Nascita dell'Intelligenza nel Bambino",
+      "Stadi dello Sviluppo Intellettuale"
+    ]
+  },
+  {
+    "name": "Carl Rogers",
+    "category": "Psicologia",
+    "specialized": "Umanistica",
+    "year": 1902,
+    "decade": 1900,
+    "description": "Carl Rogers, psicologo umanista, promuove l'approccio centrato sulla persona e l'empatia nella psicoterapia.",
+    "image": "rogers.png",
+    "works": [
+      "Teoria dell'Autoattualizzazione",
+      "Psicoterapia Centrata sul Cliente"
+    ]
+  },
+  {
+    "name": "B.F. Skinner",
+    "category": "Psicologia",
+    "specialized": "Comportamentismo",
+    "year": 1904,
+    "decade": 1905,
+    "description": "B.F. Skinner, psicologo comportamentista, estende la teoria del comportamentismo e introduce il concetto di rinforzo.",
+    "image": "skinner.png",
+    "works": [
+      "Scienza e Comportamento Umano",
+      "Rinforzo e Comportamento Operante"
+    ]
+  },
+  {
+    "name": "Rita Levi-Montalcini",
+    "category": "Neuroscienze",
+    "specialized": "Neurologia",
+    "year": 1909,
+    "decade": 1910,
+    "description": "Rita Levi-Montalcini, neurologa italiana, scopre il fattore di crescita nervosa, contribuendo alla comprensione dello sviluppo del sistema nervoso.",
+    "image": "montalcini.png",
+    "works": [
+      "Fattore di Crescita Nervosa",
+      "Neurobiologia dello Sviluppo"
+    ]
+  },
+  {
+    "name": "Eric Kandel",
+    "category": "Neuroscienze",
+    "specialized": "Neuroscienze",
+    "year": 1929,
+    "decade": 1930,
+    "description": "Eric Kandel, neuroscienziato, riceve il Nobel per la sua ricerca sulle basi cellulari della memoria nel sistema nervoso.",
+    "image": "kandel.png",
+    "works": [
+      "Principi di Neuroscienze",
+      "Memoria e Plasticità Neuronale"
+    ]
+  },
+  {
+    "name": "Michael Gazzaniga",
+    "category": "Neuroscienze",
+    "specialized": "Neuroscienze",
+    "year": 1939,
+    "decade": 1940,
+    "description": "Michael Gazzaniga, neuroscienziato, è noto per le sue ricerche sulle funzioni cognitive emisferiche e la lateralizzazione cerebrale.",
+    "image": "gazzaniga.png",
+    "works": [
+      "Lateralizzazione Cerebrale",
+      "Cervello Diviso"
+    ]
+  },
+    {
+      "name": "Donald O. Hebb 0000",
+      "category": "Neuroscienze",
+      "specialized": "Neuropsicologo",
+      "year": 1904,
+      "decade": 1905,
+      "description": "Donald O. Hebb, neuropsicologo, è noto per la teoria dell'apprendimento basata sulla plasticità sinaptica.",
+      "image": "hebb.png",
+      "works": [
+        "Organizzazione del Comportamento",
+        "Teoria dell'Apprendimento"
+      ]
+    },
+    {
+      "name": "Noam Chomsky",
+      "category": "Psicologia",
+      "specialized": "Linguistica Cognitiva",
+      "year": 1928,
+      "decade": 1930,
+      "description": "Noam Chomsky, linguista e cognitivista, rivoluziona lo studio del linguaggio e della mente con la sua teoria generativa della grammatica.",
+      "image": "chomsky.png",
+      "works": [
+        "Strutture Sintattiche",
+        "La Rivoluzione Copernicana"
+      ]
+    },
+    {
+      "name": "Aaron T. Beck",
+      "category": "Psicologia",
+      "specialized": "Terapia Cognitiva",
+      "year": 1921,
+      "decade": 1920,
+      "description": "Aaron T. Beck, psichiatra, è uno dei fondatori della terapia cognitiva, influenzando il trattamento delle malattie mentali.",
+      "image": "beck.png",
+      "works": [
+        "Terapia Cognitiva delle Psicosi",
+        "Depressione: Cause e Trattamento"
+      ]
+    },
+    {
+      "name": "Albert Bandura",
+      "category": "Psicologia",
+      "specialized": "Teoria dell'Apprendimento Sociale",
+      "year": 1925,
+      "decade": 1920,
+      "description": "Albert Bandura, psicologo, sviluppa la teoria dell'apprendimento sociale, evidenziando il ruolo dell'osservazione e dell'imitazione nel comportamento umano.",
+      "image": "bandura.png",
+      "works": [
+        "Apprendimento Sociale",
+        "Teoria dell'Autoefficacia"
+      ]
+    },
+    {
+      "name": "Roger W. Sperry",
+      "category": "Neuroscienze",
+      "specialized": "Neuroscienze",
+      "year": 1913,
+      "decade": 1910,
+      "description": "Roger W. Sperry, neuroscienziato, riceve il Nobel per la sua ricerca sull'emisfero cerebrale destro e sinistro.",
+      "image": "sperry.png",
+      "works": [
+        "Emisferi Cerebrali",
+        "Plasticità Neuronale"
+      ]
+    },
+    {
+      "name": "Ursula Bellugi",
+      "category": "Neuroscienze",
+      "specialized": "Neuropsicologia",
+      "year": 1931,
+      "decade": 1930,
+      "description": "Ursula Bellugi, neuropsicologa, contribuisce allo studio delle anomalie linguistiche nei pazienti con sindrome di Williams.",
+      "image": "bellugi.png",
+      "works": [
+        "Neuropsicologia della Sindrome di Williams",
+        "Linguaggio e Cervello"
+      ]
+    },
+    {
+      "name": "Oliver Sacks",
+      "category": "Neuroscienze",
+      "specialized": "Neurologia",
+      "year": 1933,
+      "decade": 1930,
+      "description": "Oliver Sacks, neurologo e scrittore, divulgatore scientifico, racconta storie di pazienti affetti da disturbi neurologici in modo accessibile al pubblico.",
+      "image": "sacks.png",
+      "works": [
+        "L'uomo che scambiò sua moglie per un cappello",
+        "Ve l'ho raccontato",
+        "L'isola dei senza colore"
+      ]
+    },
+    {
+      "name": "Richard Davidson",
+      "category": "Neuroscienze",
+      "specialized": "Neuroscienze Affective",
+      "year": 1951,
+      "decade": 1950,
+      "description": "Richard Davidson, neuroscienziato, è noto per la sua ricerca sulle basi neurali dell'emozione e della regolazione emotiva.",
+      "image": "davidson.png",
+      "works": [
+        "Neuroscienze Affective",
+        "Benessere Emotivo"
+      ]
+    },
+    {
+      "name": "Elkhonon Goldberg",
+      "category": "Neuroscienze",
+      "specialized": "Neuropsicologia",
+      "year": 1946,
+      "decade": 1940,
+      "description": "Elkhonon Goldberg, neuropsicologo, contribuisce allo studio dell'ematocritica e della lateralizzazione cerebrale.",
+      "image": "goldberg.png",
+      "works": [
+        "L'emisfero destro",
+        "La Creatività"
+      ]
+    },
+    {
+      "name": "Antonio Damasio",
+      "category": "Neuroscienze",
+      "specialized": "Neurobiologia delle Emozioni",
+      "year": 1944,
+      "decade": 1940,
+      "description": "Antonio Damasio, neuroscienziato, esplora le basi biologiche delle emozioni e il ruolo del cervello nel processo decisionale.",
+      "image": "damasio.png",
+      "works": [
+        "Emozione e Coscienza",
+        "L'Errore di Cartesio"
+      ]
+    },
+    {
+      "name": "Mary Ainsworth",
+      "category": "Psicologia",
+      "specialized": "Teoria dell'Attaccamento",
+      "year": 1913,
+      "decade": 1910,
+      "description": "Mary Ainsworth, psicologa dello sviluppo, contribuisce alla teoria dell'attaccamento nell'infanzia.",
+      "image": "ainsworth.png",
+      "works": [
+        "Schema dell'Attaccamento",
+        "Ricerca sull'Attaccamento Materno"
+      ]
+    },
+    {
+      "name": "Jerome Kagan",
+      "category": "Psicologia",
+      "specialized": "Psicologia dello Sviluppo",
+      "year": 1929,
+      "decade": 1930,
+      "description": "Jerome Kagan, psicologo dello sviluppo, studia la temperanza infantile e l'ansia.",
+      "image": "kagan.png",
+      "works": [
+        "Il Temperamento Infantile",
+        "Studio sull'Ansia Infantile"
+      ]
+    },
+    {
+      "name": "Philip Zimbardo",
+      "category": "Psicologia",
+      "specialized": "Psicologia Sociale",
+      "year": 1933,
+      "decade": 1930,
+      "description": "Philip Zimbardo è noto per l'esperimento delle carceri di Stanford, che ha esaminato il comportamento dei partecipanti in un ambiente simulato di prigione, evidenziando il rapido adattamento ai ruoli assegnati.",
+      "image": "zimbardo.png",
+      "works": [
+        "L'Effetto Lucifero",
+        "La Psicologia del Male"
+      ]
+    },
+    {
+      "name": "Solomon Asch",
+      "category": "Psicologia",
+      "specialized": "Psicologia Sociale",
+      "year": 1907,
+      "decade": 1900,
+      "description": "Solomon Asch ha condotto esperimenti pionieristici sul conformismo, evidenziando come le persone siano influenzate dalle risposte errate degli altri anche in situazioni ovvie.",
+      "image": "asch.png",
+      "works": [
+        "Conformità",
+        "Esercizi di Gruppo e Psicoterapia"
+      ]
+    },
+    {
+      "name": "Stanley Milgram",
+      "category": "Psicologia",
+      "specialized": null,
+      "year": 1933,
+      "decade": 1930,
+      "description": "Stanley Milgram è famoso per l'esperimento sull'obbedienza, che ha esaminato fino a che punto le persone sono disposte a infliggere dolore agli altri in risposta a un'autorità.",
+      "image": "milgram.png",
+      "works": [
+        "Sottomissione alla Autorità",
+        "La Percezione dell'Autorità"
+      ]
+    }
+  ]
+  
+
