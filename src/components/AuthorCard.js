@@ -15,7 +15,7 @@ const categoryColors = {
 
 const AuthorCard = ({ name, category, specialized, description, year, works, image, toggleHover, index }) => {
   const [isClicked, setIsClicked] = useState(false);
-  const imagePath = `${process.env.PUBLIC_URL}./media/img/${image}`;
+  const imagePath = `${process.env.PUBLIC_URL}/media/img/${image}`;
   console.log(imagePath)
   const backgroundColor = categoryColors[category];
 
