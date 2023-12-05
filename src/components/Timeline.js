@@ -24,21 +24,6 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const [TODAY_TICK, setTodayTick] = useState(0);
   const [HOVERED_YEAR, setHoveredYear] = useState(null);
 
-  // Calculate the current year and set today's tick
-  useEffect(() => {
-    const today = new Date().getFullYear();
-    setTodayTick(Math.floor((today - START_YEAR_STATE) / YEAR_INTERVAL));
-  }, [START_YEAR_STATE, YEAR_INTERVAL]);
-
-  // Calculate the total number of ticks
-  useEffect(() => {
-    const currentYear = new Date().getFullYear();
-    const yearsDifference = currentYear - START_YEAR_STATE;
-    const totalTicks = Math.ceil(yearsDifference / YEAR_INTERVAL);
-    setTotalTicks(totalTicks);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [START_YEAR_STATE, YEAR_INTERVAL]);
-
   // Function to determine the visibility of the tick based on the presence of authors
   const isTickVisible = (years) => {
     const authorsForYear = filterAuthorsForYear(years);
@@ -63,8 +48,22 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
         // Call handleTickClick function directly with the author's year index
         handleTickClick(author.year);
       }
-    }// eslint-disable-next-line react-hooks/exhaustive-deps
+    }
   }, [selectedAuthor, START_YEAR_STATE, YEAR_INTERVAL]);
+
+  // Calculate the current year and set today's tick
+  useEffect(() => {
+    const today = new Date().getFullYear();
+    setTodayTick(Math.floor((today - START_YEAR_STATE) / YEAR_INTERVAL));
+  }, [START_YEAR_STATE, YEAR_INTERVAL]);
+
+  // Calculate the total number of ticks
+  useEffect(() => {
+    const currentYear = new Date().getFullYear();
+    const yearsDifference = currentYear - START_YEAR_STATE;
+    const totalTicks = Math.ceil(yearsDifference / YEAR_INTERVAL);
+    setTotalTicks(totalTicks);
+  }, [START_YEAR_STATE, YEAR_INTERVAL]);
 
   // Function to handle a click on a timeline tick
   const handleTickClick = (years) => {
@@ -76,27 +75,27 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
     authorsData.filter((author) => author.year === years);
 
   // Handle mouse events for dragging the timeline
+  const handleMouseEnter = () => {
+    timelineRef.current.style.cursor = 'grab';
+  };
+
+  const handleMouseMove = (event) => {
+    if (DRAG_START_X !== null) {
+      const delta = event.clientX - DRAG_START_X;
+      setScrollX((prevScrollX) => prevScrollX + delta);
+      setDragStartX(event.clientX);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setDragStartX(null);
+    timelineRef.current.style.cursor = 'grab';
+  };
+
   useEffect(() => {
-    const handleMouseEnter = () => {
-      timelineRef.current.style.cursor = 'grab';
-    };
-  
-    const handleMouseMove = (event) => {
-      if (DRAG_START_X !== null) {
-        const delta = event.clientX - DRAG_START_X;
-        setScrollX((prevScrollX) => prevScrollX + delta);
-        setDragStartX(event.clientX);
-      }
-    };
-  
-    const handleMouseUp = () => {
-      setDragStartX(null);
-      timelineRef.current.style.cursor = 'grab';
-    };
-  
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
-  
+
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
