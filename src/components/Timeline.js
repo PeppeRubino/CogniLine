@@ -27,11 +27,10 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const filterAuthorsForYear = (years) =>
     authorsData.filter((author) => author.year === years);
 
-  // Function to handle a click on a timeline tick
-  const handleTickClick = useCallback((years = true) => {
-    console.log('Handle Tick Click:', years);
-    setClickedYear((prevYear) => (prevYear === years ? null : years));
-  }, []);
+    const handleTickClick = useCallback((years, isClicked) => {
+      console.log('Handle Tick Click:', years);
+      setClickedYear((prevYear) => (prevYear === years ? null : years));
+    }, []);
 
   // Function to determine the visibility of the tick based on the presence of authors
   const isTickVisible = (years) => {
@@ -62,7 +61,7 @@ useEffect(() => {
     if (author && author.year !== undefined) {
       const authorYearIndex = Math.floor((author.year - START_YEAR_STATE) / YEAR_INTERVAL);
       setScrollX(-authorYearIndex * TICK_DISTANCE + 500);
-      // Call handleTickClick function directly with the author's year index
+      // Call  function directly with the author's year index
       handleTickClick(author.year);
     }
   }
@@ -143,7 +142,7 @@ useEffect(() => {
                 <div
                   className={`timeline-tick absolute h-3 w-1 p-1 cursor-pointer text-gray-600 ${CLICKED_YEAR === years ? 'bg-blue-500 absolute' : 'bg-gray-600'}`}
                   style={{ ...tickStyle, top: 0 }}
-                  onClick={() => handleTickClick(years, false)}
+                  onClick={() => handleTickClick(years)}
                   onMouseEnter={() => setHoveredYear(years)}
                 >
                   {HOVERED_YEAR === years && <h5 className='absolute -top-5 font-thin'>{years}</h5>}
