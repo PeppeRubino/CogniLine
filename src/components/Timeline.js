@@ -28,15 +28,10 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
     authorsData.filter((author) => author.year === years);
 
   // Function to handle a click on a timeline tick
-  const handleTickClick = useCallback((years, scrollToAuthor = true) => {
+  const handleTickClick = useCallback((years = true) => {
     console.log('Handle Tick Click:', years);
     setClickedYear((prevYear) => (prevYear === years ? null : years));
-  
-    if (scrollToAuthor) {
-      const authorYearIndex = Math.floor((years - START_YEAR_STATE) / YEAR_INTERVAL);
-      setScrollX(-authorYearIndex * TICK_DISTANCE + 500);
-    }
-  }, [START_YEAR_STATE, YEAR_INTERVAL]);
+  }, []);
 
   // Function to determine the visibility of the tick based on the presence of authors
   const isTickVisible = (years) => {
