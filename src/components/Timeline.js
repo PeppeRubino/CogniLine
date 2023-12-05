@@ -8,6 +8,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const TICK_DISTANCE = 18;
   const START_YEAR = -3000;
   const YEAR_INTERVAL = 1;
+  const SPECIAL_TICK_INTERVAL = 100; 
 
   // Ref for the timeline
   const timelineRef = useRef(null);
