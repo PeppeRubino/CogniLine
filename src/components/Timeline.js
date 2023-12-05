@@ -36,6 +36,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
     const yearsDifference = currentYear - START_YEAR_STATE;
     const totalTicks = Math.ceil(yearsDifference / YEAR_INTERVAL);
     setTotalTicks(totalTicks);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [START_YEAR_STATE, YEAR_INTERVAL]);
 
   // Function to determine the visibility of the tick based on the presence of authors
@@ -62,7 +63,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
         // Call handleTickClick function directly with the author's year index
         handleTickClick(author.year);
       }
-    }
+    }// eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedAuthor, START_YEAR_STATE, YEAR_INTERVAL]);
 
   // Function to handle a click on a timeline tick
@@ -99,7 +100,8 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [DRAG_START_X]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [DRAG_START_X, handleMouseMove]);
 
   // Handle mouse wheel event for scrolling the timeline
   const handleMouseWheel = (event) => {
