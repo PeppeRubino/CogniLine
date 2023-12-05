@@ -76,11 +76,15 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
     authorsData.filter((author) => author.year === years);
 
   // Handle mouse events for dragging the timeline
-  const handleMouseEnter = () => {
-    timelineRef.current.style.cursor = 'grab';
-  };
-
   useEffect(() => {
+    const handleMouseMove = (event) => {
+      if (DRAG_START_X !== null) {
+        const delta = event.clientX - DRAG_START_X;
+        setScrollX((prevScrollX) => prevScrollX + delta);
+        setDragStartX(event.clientX);
+      }
+    };
+  
     const handleMouseUp = () => {
       setDragStartX(null);
       timelineRef.current.style.cursor = 'grab';
