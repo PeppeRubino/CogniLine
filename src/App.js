@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import Timeline from './components/Timeline';
 import AuthorFilter from './components/AuthorFilter.js';
 import YearFilter from './components/YearFilter.js';
