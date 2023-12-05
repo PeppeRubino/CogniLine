@@ -71,14 +71,14 @@ useEffect(() => {
       handleTickClick(author.year);
     }
   }
-}, [selectedAuthor, START_YEAR_STATE]);
+}, [selectedAuthor, START_YEAR_STATE, YEAR_INTERVAL]);
 
 
   // Calculate the current year and set today's tick
   useEffect(() => {
     const today = new Date().getFullYear();
     setTodayTick(Math.floor((today - START_YEAR_STATE) / YEAR_INTERVAL));
-  }, [START_YEAR_STATE, YEAR_INTERVAL, handleTickClick]);
+  }, [START_YEAR_STATE, YEAR_INTERVAL]);
 
   // Handle mouse events for dragging the timeline
   const handleMouseEnter = useCallback(() => {
