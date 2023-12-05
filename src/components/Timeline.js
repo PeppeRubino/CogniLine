@@ -22,11 +22,28 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const [TODAY_TICK, setTodayTick] = useState(0);
   const [HOVERED_YEAR, setHoveredYear] = useState(null);
 
+  // Function to filter authors for a specific year
+  const filterAuthorsForYear = (years) =>
+    authorsData.filter((author) => author.year === years);
+
+  // Function to handle a click on a timeline tick
+  const handleTickClick = useCallback((years) => {
+    setClickedYear((prevYear) => (prevYear === years ? null : years));
+  }, []);
+
   // Function to determine the visibility of the tick based on the presence of authors
   const isTickVisible = (years) => {
     const authorsForYear = filterAuthorsForYear(years);
     return authorsForYear.length > 0;
   };
+
+  // Calculate the total number of ticks
+  useEffect(() => {
+    const currentYear = new Date().getFullYear();
+    const yearsDifference = currentYear - START_YEAR_STATE;
+    const totalTicks = Math.ceil(yearsDifference / YEAR_INTERVAL);
+    setTotalTicks(totalTicks);
+  }, [START_YEAR_STATE, YEAR_INTERVAL]);
 
   // Handle the selected year
   useEffect(() => {
@@ -47,30 +64,13 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
         handleTickClick(author.year);
       }
     }
-  }, [selectedAuthor, START_YEAR_STATE, YEAR_INTERVAL]);
+  }, [selectedAuthor, START_YEAR_STATE, YEAR_INTERVAL, handleTickClick]);
 
   // Calculate the current year and set today's tick
   useEffect(() => {
     const today = new Date().getFullYear();
     setTodayTick(Math.floor((today - START_YEAR_STATE) / YEAR_INTERVAL));
   }, [START_YEAR_STATE, YEAR_INTERVAL, handleTickClick]);
-
-  // Calculate the total number of ticks
-  useEffect(() => {
-    const currentYear = new Date().getFullYear();
-    const yearsDifference = currentYear - START_YEAR_STATE;
-    const totalTicks = Math.ceil(yearsDifference / YEAR_INTERVAL);
-    setTotalTicks(totalTicks);
-  }, [START_YEAR_STATE, YEAR_INTERVAL]);
-
-  // Function to handle a click on a timeline tick
-  const handleTickClick = useCallback((years) => {
-    setClickedYear((prevYear) => (prevYear === years ? null : years));
-  }, []);
-
-  // Function to filter authors for a specific year
-  const filterAuthorsForYear = (years) =>
-    authorsData.filter((author) => author.year === years);
 
   // Handle mouse events for dragging the timeline
   const handleMouseEnter = useCallback(() => {
@@ -83,7 +83,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
       setScrollX((prevScrollX) => prevScrollX + delta);
       setDragStartX(event.clientX);
     }
-  }, [DRAG_START_X]);
+  }, [DRAG_START_X, prevScrollX]);
 
   const handleMouseUp = useCallback(() => {
     setDragStartX(null);
@@ -98,7 +98,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [handleMouseMove, handleMouseUp]);
+  }, [handleMouseMove, handleMouseUp, START_YEAR_STATE]);
 
   // Handle mouse wheel event for scrolling the timeline
   const handleMouseWheel = (event) => {
