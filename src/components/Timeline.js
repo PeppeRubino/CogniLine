@@ -71,6 +71,7 @@ useEffect(() => {
 useEffect(() => {
   if (CLICKED_YEAR !== null) {
     handleTickClick(CLICKED_YEAR);
+    console.log("clicked year" + CLICKED_YEAR)
   }
 }, [CLICKED_YEAR, handleTickClick]);
 
