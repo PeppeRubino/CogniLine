@@ -67,6 +67,8 @@ useEffect(() => {
     if (author && author.year !== undefined) {
       const authorYearIndex = Math.floor((author.year - START_YEAR_STATE) / YEAR_INTERVAL);
       setScrollX(-authorYearIndex * TICK_DISTANCE + 500);
+      // Call handleTickClick function directly with the author's year index
+      handleTickClick(author.year);
     }
   }
 }, [selectedAuthor, START_YEAR_STATE, YEAR_INTERVAL]);
