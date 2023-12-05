@@ -80,7 +80,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const handleMouseMove = useCallback((event) => {
     if (DRAG_START_X !== null) {
       const delta = event.clientX - DRAG_START_X;
-      setScrollX((prevScrollX) => prevScrollX + delta);
+      setScrollX((prevScrollX) => (prevScrollX || 0) + delta);
       setDragStartX(event.clientX);
     }
   }, [DRAG_START_X, prevScrollX]);
