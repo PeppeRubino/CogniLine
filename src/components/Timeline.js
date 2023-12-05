@@ -22,14 +22,21 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const [TODAY_TICK, setTodayTick] = useState(0);
   const [HOVERED_YEAR, setHoveredYear] = useState(null);
 
+
   // Function to filter authors for a specific year
   const filterAuthorsForYear = (years) =>
     authorsData.filter((author) => author.year === years);
 
   // Function to handle a click on a timeline tick
-  const handleTickClick = useCallback((years) => {
+  const handleTickClick = useCallback((years, scrollToAuthor = true) => {
+    console.log('Handle Tick Click:', years);
     setClickedYear((prevYear) => (prevYear === years ? null : years));
-  }, []);
+  
+    if (scrollToAuthor) {
+      const authorYearIndex = Math.floor((years - START_YEAR_STATE) / YEAR_INTERVAL);
+      setScrollX(-authorYearIndex * TICK_DISTANCE + 500);
+    }
+  }, [START_YEAR_STATE, YEAR_INTERVAL]);
 
   // Function to determine the visibility of the tick based on the presence of authors
   const isTickVisible = (years) => {
@@ -53,18 +60,19 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
     }
   }, [selectedYear, START_YEAR_STATE, YEAR_INTERVAL]);
 
-  // Handle the selected author
-  useEffect(() => {
-    if (selectedAuthor !== null) {
-      const author = authorsData.find((author) => author.name === selectedAuthor);
-      if (author && author.year !== undefined) {
-        const authorYearIndex = Math.floor((author.year - START_YEAR_STATE) / YEAR_INTERVAL);
-        setScrollX(-authorYearIndex * TICK_DISTANCE + 500);
-        // Call handleTickClick function directly with the author's year index
-        handleTickClick(author.year);
-      }
+// Handle the selected author
+useEffect(() => {
+  if (selectedAuthor !== null) {
+    const author = authorsData.find((author) => author.name === selectedAuthor);
+    if (author && author.year !== undefined) {
+      const authorYearIndex = Math.floor((author.year - START_YEAR_STATE) / YEAR_INTERVAL);
+      setScrollX(-authorYearIndex * TICK_DISTANCE + 500);
+      // Call handleTickClick function directly with the author's year index
+      handleTickClick(author.year);
     }
-  }, [selectedAuthor, START_YEAR_STATE, YEAR_INTERVAL, handleTickClick]);
+  }
+}, [selectedAuthor, START_YEAR_STATE, YEAR_INTERVAL]);
+
 
   // Calculate the current year and set today's tick
   useEffect(() => {
@@ -120,6 +128,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
         onWheel={handleMouseWheel}
         ref={timelineRef}
         style={{ width: `${TOTAL_TICKS * TICK_DISTANCE}px`, transform: `translateX(${SCROLL_X}px)` }}
+
       >
         {/* Today's timeline start */}
         <div
@@ -139,7 +148,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
                 <div
                   className={`timeline-tick absolute h-3 w-1 p-1 cursor-pointer text-gray-600 ${CLICKED_YEAR === years ? 'bg-blue-500 absolute' : 'bg-gray-600'}`}
                   style={{ ...tickStyle, top: 0 }}
-                  onClick={() => handleTickClick(years)}
+                  onClick={() => handleTickClick(years, false)}
                   onMouseEnter={() => setHoveredYear(years)}
                 >
                   {HOVERED_YEAR === years && <h5 className='absolute -top-5 font-thin'>{years}</h5>}

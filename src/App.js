@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Timeline from './components/Timeline';
 import AuthorFilter from './components/AuthorFilter.js';
 import YearFilter from './components/YearFilter.js';
@@ -15,8 +15,8 @@ function App() {
         <h2 className="text-white text-2xl font-bold mr-5 ">LinearAPP</h2>
         {/* Aggiungi i tuoi filtri qui */}
         <div className='bg-blue-900'>
-        <AuthorFilter onFilterAuthor={setSelectedAuthor} />
-      <YearFilter onFilterYear={setSelectedYear} />
+        <AuthorFilter onFilterAuthor={setSelectedAuthor}/>
+        <YearFilter onFilterYear={setSelectedYear} />
         </div>
       </div>
 
