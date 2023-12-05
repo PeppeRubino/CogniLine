@@ -75,30 +75,48 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
     authorsData.filter((author) => author.year === years);
 
   // Handle mouse events for dragging the timeline
-  const handleMouseEnter = (event) => {
-    setDragStartX(event.clientX);
-  };
+// Handle mouse events for dragging the timeline
+const handleMouseEnter = (event) => {
+  setDragStartX(event.clientX);
+};
 
+const handleMouseMove = (event) => {
+  if (DRAG_START_X !== null) {
+    const delta = event.clientX - DRAG_START_X;
+    setScrollX((prevScrollX) => prevScrollX + delta); // Usare la funzione di aggiornamento
+    setDragStartX(event.clientX);
+  }
+};
+const handleMouseUp = () => {
+  setDragStartX(null);
+};
+
+useEffect(() => {
   const handleMouseMove = (event) => {
     if (DRAG_START_X !== null) {
       const delta = event.clientX - DRAG_START_X;
-      setScrollX(SCROLL_X + delta);
+      setScrollX((prevScrollX) => prevScrollX + delta);
       setDragStartX(event.clientX);
     }
   };
 
-  const handleMouseUp = () => {
-    setDragStartX(null);
+  document.addEventListener('mousemove', handleMouseMove);
+  document.addEventListener('mouseup', handleMouseUp);
+  return () => {
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
   };
+}, [DRAG_START_X]);
 
-  useEffect(() => {
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [DRAG_START_X]);
+
+useEffect(() => {
+  document.addEventListener('mousemove', handleMouseMove);
+  document.addEventListener('mouseup', handleMouseUp);
+  return () => {
+    document.removeEventListener('mousemove', handleMouseMove);
+    document.removeEventListener('mouseup', handleMouseUp);
+  };
+}, [DRAG_START_X, handleMouseMove]); // Aggiungi handleMouseMove alle dipendenze
 
   // Handle mouse wheel event for scrolling the timeline
   const handleMouseWheel = (event) => {
