@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import AuthorCard from './AuthorCard.js';
 import authorsData from '../JSON/authorsData.json';
 import '../App.css';
@@ -8,7 +8,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const TICK_DISTANCE = 18;
   const START_YEAR = -3000;
   const YEAR_INTERVAL = 1;
-  const SPECIAL_TICK_INTERVAL = 100; 
+  const SPECIAL_TICK_INTERVAL = 100;
 
   // Ref for the timeline
   const timelineRef = useRef(null);
@@ -16,7 +16,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   // State variables
   const [DRAG_START_X, setDragStartX] = useState(null);
   const [SCROLL_X, setScrollX] = useState(0);
-  const [START_YEAR_STATE] = useState(START_YEAR);
+  const START_YEAR_STATE = START_YEAR; // Removed array dependency
   const [CLICKED_YEAR, setClickedYear] = useState(null);
   const [TOTAL_TICKS, setTotalTicks] = useState(0);
   const [TODAY_TICK, setTodayTick] = useState(0);
@@ -34,7 +34,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
       const yearIndex = Math.floor((selectedYear - START_YEAR_STATE) / YEAR_INTERVAL);
       setScrollX(-yearIndex * TICK_DISTANCE + 500);
     }
-  }, [selectedYear]);
+  }, [selectedYear, START_YEAR_STATE, YEAR_INTERVAL]);
 
   // Handle the selected author
   useEffect(() => {
@@ -64,31 +64,31 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   }, [START_YEAR_STATE, YEAR_INTERVAL]);
 
   // Function to handle a click on a timeline tick
-  const handleTickClick = (years) => {
+  const handleTickClick = useCallback((years) => {
     setClickedYear((prevYear) => (prevYear === years ? null : years));
-  };
+  }, []);
 
   // Function to filter authors for a specific year
   const filterAuthorsForYear = (years) =>
     authorsData.filter((author) => author.year === years);
 
   // Handle mouse events for dragging the timeline
-  const handleMouseEnter = () => {
+  const handleMouseEnter = useCallback(() => {
     timelineRef.current.style.cursor = 'grab';
-  };
+  }, []);
 
-  const handleMouseMove = (event) => {
+  const handleMouseMove = useCallback((event) => {
     if (DRAG_START_X !== null) {
       const delta = event.clientX - DRAG_START_X;
       setScrollX((prevScrollX) => prevScrollX + delta);
       setDragStartX(event.clientX);
     }
-  };
+  }, [DRAG_START_X, prevScrollX]);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     setDragStartX(null);
     timelineRef.current.style.cursor = 'grab';
-  };
+  }, []);
 
   useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove);
@@ -98,8 +98,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [DRAG_START_X, START_YEAR_STATE, handleMouseEnter, handleMouseMove, handleMouseUp]);
-
+  }, [handleMouseMove, handleMouseUp]);
 
   // Handle mouse wheel event for scrolling the timeline
   const handleMouseWheel = (event) => {
