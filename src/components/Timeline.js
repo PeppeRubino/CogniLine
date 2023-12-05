@@ -75,23 +75,10 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
     authorsData.filter((author) => author.year === years);
 
   // Handle mouse events for dragging the timeline
-// Handle mouse events for dragging the timeline
-const handleMouseEnter = (event) => {
-  setDragStartX(event.clientX);
-};
+  const handleMouseEnter = () => {
+    timelineRef.current.style.cursor = 'grab';
+  };
 
-const handleMouseMove = (event) => {
-  if (DRAG_START_X !== null) {
-    const delta = event.clientX - DRAG_START_X;
-    setScrollX((prevScrollX) => prevScrollX + delta); // Usare la funzione di aggiornamento
-    setDragStartX(event.clientX);
-  }
-};
-const handleMouseUp = () => {
-  setDragStartX(null);
-};
-
-useEffect(() => {
   const handleMouseMove = (event) => {
     if (DRAG_START_X !== null) {
       const delta = event.clientX - DRAG_START_X;
@@ -100,28 +87,24 @@ useEffect(() => {
     }
   };
 
-  document.addEventListener('mousemove', handleMouseMove);
-  document.addEventListener('mouseup', handleMouseUp);
-  return () => {
-    document.removeEventListener('mousemove', handleMouseMove);
-    document.removeEventListener('mouseup', handleMouseUp);
+  const handleMouseUp = () => {
+    setDragStartX(null);
+    timelineRef.current.style.cursor = 'grab';
   };
-}, [DRAG_START_X]);
 
-
-useEffect(() => {
-  document.addEventListener('mousemove', handleMouseMove);
-  document.addEventListener('mouseup', handleMouseUp);
-  return () => {
-    document.removeEventListener('mousemove', handleMouseMove);
-    document.removeEventListener('mouseup', handleMouseUp);
-  };
-}, [DRAG_START_X, handleMouseMove]); // Aggiungi handleMouseMove alle dipendenze
+  useEffect(() => {
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, [DRAG_START_X]);
 
   // Handle mouse wheel event for scrolling the timeline
   const handleMouseWheel = (event) => {
     const delta = event.deltaX || event.deltaY; // Use deltaX for horizontal scrolling, deltaY for vertical scrolling
-    setScrollX(SCROLL_X + delta * 2);
+    setScrollX((prevScrollX) => prevScrollX + delta * 2);
     event.preventDefault(); // Prevent the page from scrolling when the mouse wheel is over your component
   };
 
@@ -130,9 +113,11 @@ useEffect(() => {
       {/* Timeline */}
       <div
         className="timeline timeline-line bg-white shadow-md h-5 rounded-md z-40"
-        onMouseMove={(event) => timelineRef.current.style.cursor = 'grabbing'}
-        onMouseEnter={() => timelineRef.current.style.cursor = 'grab'}
-        onMouseDown={handleMouseEnter}
+        onMouseEnter={handleMouseEnter}
+        onMouseDown={(event) => {
+          handleMouseEnter();
+          setDragStartX(event.clientX);
+        }}
         onWheel={handleMouseWheel}
         ref={timelineRef}
         style={{ width: `${TOTAL_TICKS * TICK_DISTANCE}px`, transform: `translateX(${SCROLL_X}px)` }}
@@ -150,10 +135,9 @@ useEffect(() => {
           const authorsForYear = filterAuthorsForYear(years);
 
           return (
-            <>
+            <React.Fragment key={index}>
               {isVisible && (
                 <div
-                  key={index}
                   className={`timeline-tick absolute h-3 w-1 p-1 cursor-pointer text-gray-600 ${CLICKED_YEAR === years ? 'bg-blue-500 absolute' : 'bg-gray-600'}`}
                   style={{ ...tickStyle, top: 0 }}
                   onClick={() => handleTickClick(years)}
@@ -178,14 +162,13 @@ useEffect(() => {
               {/* Display a "special tick" every 100 years */}
               {index % SPECIAL_TICK_INTERVAL === 0 && index <= TODAY_TICK && (
                 <div
-                  key={`special_${index}`}
                   className="timeline-tick-hundredth -top-2 w-3 h-5 absolute overflow-visible bg-green-600"
                   style={{ left: `${(years - START_YEAR_STATE) / YEAR_INTERVAL * TICK_DISTANCE}px` }}
                 >
                   <h3 className='absolute -top-6 -left-2 bg-white rounded-md p-1' style={{ fontSize: '9px' }}>{years}</h3>
                 </div>
               )}
-            </>
+            </React.Fragment>
           );
         })}
       </div>
