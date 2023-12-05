@@ -6,8 +6,6 @@ import '../App.css';
 const Timeline = ({ selectedYear, selectedAuthor }) => {
   // Constants for configuration
   const TICK_DISTANCE = 18;
-
-  // Constants for managing years
   const START_YEAR = -3000;
   const YEAR_INTERVAL = 1;
 
@@ -20,7 +18,6 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const [START_YEAR_STATE] = useState(START_YEAR);
   const [CLICKED_YEAR, setClickedYear] = useState(null);
   const [TOTAL_TICKS, setTotalTicks] = useState(0);
-  const SPECIAL_TICK_INTERVAL = 100; // Every 100 years for special ticks
   const [TODAY_TICK, setTodayTick] = useState(0);
   const [HOVERED_YEAR, setHoveredYear] = useState(null);
 
@@ -100,7 +97,8 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
     };
-  }, [DRAG_START_X, START_YEAR_STATE]);
+  }, [DRAG_START_X, START_YEAR_STATE, handleMouseEnter, handleMouseMove, handleMouseUp]);
+
 
   // Handle mouse wheel event for scrolling the timeline
   const handleMouseWheel = (event) => {
