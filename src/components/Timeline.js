@@ -17,7 +17,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   // State variables
   const [DRAG_START_X, setDragStartX] = useState(null);
   const [SCROLL_X, setScrollX] = useState(0);
-  const [START_YEAR_STATE, setStartYear] = useState(START_YEAR);
+  const [START_YEAR_STATE] = useState(START_YEAR);
   const [CLICKED_YEAR, setClickedYear] = useState(null);
   const [TOTAL_TICKS, setTotalTicks] = useState(0);
   const SPECIAL_TICK_INTERVAL = 100; // Every 100 years for special ticks
