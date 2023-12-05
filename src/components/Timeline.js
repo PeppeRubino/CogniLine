@@ -67,6 +67,13 @@ useEffect(() => {
   }
 }, [selectedAuthor, START_YEAR_STATE, handleTickClick]);
 
+// Chiamare handleTickClick dopo l'aggiornamento di CLICKED_YEAR
+useEffect(() => {
+  if (CLICKED_YEAR !== null) {
+    handleTickClick(CLICKED_YEAR);
+  }
+}, [CLICKED_YEAR, handleTickClick]);
+
 
   // Calculate the current year and set today's tick
   useEffect(() => {
