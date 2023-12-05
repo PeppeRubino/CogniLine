@@ -53,7 +53,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   useEffect(() => {
     const today = new Date().getFullYear();
     setTodayTick(Math.floor((today - START_YEAR_STATE) / YEAR_INTERVAL));
-  }, [START_YEAR_STATE, YEAR_INTERVAL]);
+  }, [START_YEAR_STATE, YEAR_INTERVAL, handleTickClick]);
 
   // Calculate the total number of ticks
   useEffect(() => {
