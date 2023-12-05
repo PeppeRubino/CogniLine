@@ -1,0 +1,7 @@
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build]
+  command = "npm run build"
+  functions = "lambda"
+  publish = "build_local"  # Aggiorna il percorso della cartella di distribuzione
