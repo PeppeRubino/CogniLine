@@ -33,10 +33,7 @@ const YouTubeSearchBox = ({ authorName }) => {
   const initializeYouTubeSearch = (authorName) => {
     // Verifica più sicura di window.YT
     if (window.YT && typeof window.YT.SearchBox !== 'undefined') {
-      const searchBox = new window.YT.SearchBox('youtube-search', {
-        query: authorName,
-        embedded: true,
-      });
+      console.log('online')
 
       // Esegui altre operazioni necessarie con searchBox se necessario
     } else {
