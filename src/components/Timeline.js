@@ -150,8 +150,7 @@ useEffect(() => {
                         <AuthorCard
                           key={authorIndex}
                           {...author}
-                                                    isClicked={CLICKED_YEAR === years}
-                          
+                          isClicked={CLICKED_YEAR === years}
                           toggleHover={() => handleTickClick(years)}
                         />
                       ))}

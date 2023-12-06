@@ -2,14 +2,32 @@ import React, { useEffect } from 'react';
 
 const YouTubeSearchBox = ({ authorName }) => {
   useEffect(() => {
+    const loadYouTubeAPI = async () => {
+      try {
+        const apiKey = 'AIzaSyAguU9f7vcFhm8xxUfBYddzzphQ-PFEW9M'; // Sostituisci con la tua chiave API
+    
+        const response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${authorName}&maxResults=6&order=relevance&type=video&key=${apiKey}`);
+        const data = await response.json();
+    
+        if (data.items && data.items.length > 0) {
+          console.log('Video IDs:', data.items.map(item => item.id.videoId));
+          // Puoi fare ulteriori operazioni con gli ID dei video ottenuti
+        } else {
+          console.log('Nessun video trovato per l\'autore:', authorName);
+        }
+      } catch (error) {
+        console.error('Errore durante la richiesta API di YouTube:', error);
+      }
+    };
+
     const script = document.createElement('script');
-    script.src = `https://apis.google.com/js/platform.js?apikey=${process.env.REACT_APP_YOUTUBE_API_KEY}`;
+    script.src = 'https://apis.google.com/js/platform.js';
     script.async = true;
     script.defer = true;
 
     script.onload = () => {
       console.log('API di YouTube caricata con successo!');
-      // Lascia che la funzione onYouTubeIframeAPIReady si occupi dell'inizializzazione
+      loadYouTubeAPI();
     };
 
     script.onerror = () => {
@@ -23,24 +41,6 @@ const YouTubeSearchBox = ({ authorName }) => {
       delete window.onYouTubeIframeAPIReady;
     };
   }, [authorName]);
-
-  // Callback chiamata quando l'API di YouTube è completamente pronta
-  window.onYouTubeIframeAPIReady = () => {
-    console.log('API di YouTube completamente pronta!');
-    initializeYouTubeSearch(authorName);
-  };
-
-  const initializeYouTubeSearch = (authorName) => {
-    // Verifica più sicura di window.YT
-    if (window.YT && typeof window.YT.SearchBox !== 'undefined') {
-      console.log('online')
-
-      // Esegui altre operazioni necessarie con searchBox se necessario
-    } else {
-      // Riprova dopo un breve ritardo se YT.SearchBox non è ancora definito
-      setTimeout(() => initializeYouTubeSearch(authorName), 1000);
-    }
-  };
 
   return (
     <div className="w-full max-w-screen-md mx-auto mt-8">
