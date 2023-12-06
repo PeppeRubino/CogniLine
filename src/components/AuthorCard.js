@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import YouTubeSearchBox from './YouTubeSearchBox';
 
 const categoryColors = {
   Neuroscienze: 'rgba(255, 0, 0, 0.5)', // Red
@@ -20,55 +21,56 @@ const AuthorCard = ({ name, category, specialized, description, year, works, ima
   const backgroundColor = categoryColors[category];
 
   const handleClick = () => {
+    
     setIsClicked(!isClicked);
     toggleHover(index, !isClicked, year);
   };
-
   return (
     <div
-      className={`timeline-content-sm w-full h-full relative ${category} ${isClicked ? 'clicked' : ''}`}
+      className={`internal-div flex justify-evenly items-center ${category} ${isClicked ? 'clicked' : ''}`}
       onClick={handleClick}
-      style={{ left: '-50%' }}
     >
       {isClicked ? (
         /* Versione grande con tutti i dettagli */
-        <div className='absolute'>
-          <div className='div-content-background relative p-3 shadow-zinc-500 shadow-lg rounded-t-md rounded-b-md bg-zinc-300' style={{ width: '30vw',height:'100%', top:'13em', left:'-50%'}}>
-            <div className="div-content-big grid grid-cols-2 gap-3 rounded-t-md content-center object-contain relative">
+        <div className='grid grid-flow-col gap-6 absolute top-16'>
+        <div className='grid grid-flow-row shadow-zinc-500 shadow-lg rounded-md'>
+          <div className='div-content-background relative grid grid-flow-col p-2  rounded-t-md bg-zinc-300' style={{minWidth:'20vw', width: '35vw',height:'35vh'}}>
               {/* First Column */}
-              <div className='first-column block text-center'>
-                <div className="author-info flex items-center justify-center text-white rounded-t-md" style={{ backgroundColor }}>
-                  <h3 className="text-sm font-bold whitespace-no-wrap">{name}</h3>
-                  <p className='ml-1 whitespace-no-wrap'>{`(${year}y.)`}</p>
+              <div className='first-column grid-cols-1 grid grid-flow-row text-center relative overflow-y-hidden mr-2'>
+                <div className="author-info grid-row-1 flex items-center justify-center text-white rounded-t-md w-full" style={{ backgroundColor }}>
+                  <h3 className="text-sm font-bold whitespace-no-wrap mx-1">{name}</h3>
                 </div>
-                <div className="author-image bg-white w-full overflow-y-hidden" style={{ height: '30vh' }}>
-                  <img src={imagePath} alt={name} />
+                <div className="author-image grid-row-2 w-full rounded-b-md">
+                  <img className="image rounded-b-md w-full" src={imagePath} alt={name}/>
                 </div>
               </div>
               {/* Second Column */}
-              <div className="author-works text-white w-full p-2 rounded-t-md" style={{ backgroundColor }}>
-                <h4 style={{fontSize:'11px'}}>Opere:</h4>
-                <nl style={{fontSize:'9px'}}>
+              <div className="author-works second-column text-white w-full p-2 rounded-t-md rounded-b-md grid-cols-2" style={{ backgroundColor }}>
+                <h4 style={{fontSize:'0.8em'}}>Opere:</h4>
+                <ul style={{fontSize:'0.7em', listStyleType:'disc'}}>
                   {works.map((work, index) => (
                     <li key={index}>{work}</li>
                   ))}
-                </nl>
-                <div><p style={{fontSize:'12px', marginTop:'1em'}}>{description}</p></div>
+                </ul>
+                <div><p style={{fontSize:'0.8em'}}>{description}</p></div>
               </div>
-            </div>
-            {/* Category Section */}
-            <div className='block font-sm col-span-2 w-full h-6 rounded-b-md text-white text-center mt-2' style={{ backgroundColor }}>{specialized}</div>
           </div>
+                      {/* Category Section */}
+                      <div className='-bottom-4 font-sm grid-flow-row w-full h-6 rounded-b-md text-white text-center' style={{ backgroundColor }}>{specialized}</div>
+        </div>
+                  {/* YT API */}
+                  <div className='grid-cols-2 bg-gray-700' style={{ minWidth: '30vw',height:'35vh'}}><YouTubeSearchBox authorName={name} /></div>
         </div>
       ) : (
         /* Versione piccola solo con l'immagine */
-        
-        <div className="div-content-sm rounded-md shadow-zinc-700 shadow-md hover:shadow-white hover:scale-105 hover:transition-shadow" style={{ height: '100%', width: '6em', backgroundColor, top:'-1vh'  }}>
+
+        <div className="div-content-sm relative -top-28 mx-6 rounded-md shadow-zinc-800 shadow-sm hover:shadow-zinc-800 hover:shadow-lg hover:scale-105 hover:transition-shadow" style={{ height: '25vh', width: '6em', backgroundColor }}>
           <h3 className='font-sm text-white text-center rounded-t-md bg-white p-1'style={{color:backgroundColor, fontSize:'0.85em'}} >{category}</h3>
           <div className="author-image-small rounded-b-md">
             <img className='object-cover rounded-b-md p-2' style={{ height: '8em', width: '6em' }} src={imagePath} alt={name} />
           </div>
         </div>
+
       )}
     </div>
   );

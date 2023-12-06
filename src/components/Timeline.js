@@ -28,7 +28,6 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
     authorsData.filter((author) => author.year === years);
 
     const handleTickClick = useCallback((years) => {
-      console.log('Handle Tick Click Callback:', years);
       setClickedYear((prevYear) => (prevYear === years ? null : years));
     }, []);
 
@@ -57,15 +56,12 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
 // Handle the selected author
 useEffect(() => {
   if (selectedAuthor !== null) {
-    console.log(selectedAuthor)
     const author = authorsData.find((author) => author.name === selectedAuthor);
-    console.log(author)
     if (author && author.year !== undefined) {
       const authorYearIndex = Math.floor((author.year - START_YEAR_STATE) / YEAR_INTERVAL);
       setScrollX(-authorYearIndex * TICK_DISTANCE + 500);
       // Call  function directly with the author's year index
       handleTickClick(author.year);
-      console.log("handle the selected author author.year:"+ author.year)
     }
   }
 }, [selectedAuthor, START_YEAR_STATE, handleTickClick]);
@@ -108,8 +104,7 @@ useEffect(() => {
   // Handle mouse wheel event for scrolling the timeline
   const handleMouseWheel = (event) => {
     const delta = event.deltaX || event.deltaY; // Use deltaX for horizontal scrolling, deltaY for vertical scrolling
-    setScrollX((prevScrollX) => prevScrollX + delta * 2);
-    event.preventDefault(); // Prevent the page from scrolling when the mouse wheel is over your component
+    setScrollX((prevScrollX) => prevScrollX + delta * 3);
   };
 
   return (
@@ -118,9 +113,9 @@ useEffect(() => {
       <div
         className="timeline timeline-line bg-white shadow-md h-5 rounded-md z-40"
         onMouseEnter={handleMouseEnter}
-        onMouseDown={(event) => {
+        onMouseDown={(e) => {
           handleMouseEnter();
-          setDragStartX(event.clientX);
+          setDragStartX(e.clientX);
         }}
         onWheel={handleMouseWheel}
         ref={timelineRef}
@@ -150,12 +145,13 @@ useEffect(() => {
                 >
                   {HOVERED_YEAR === years && <h5 className='absolute -top-5 font-thin'>{years}</h5>}
                   {CLICKED_YEAR === years && (
-                    <div className={`grid-flow-col grid gap-24 absolute w-full h-full -top-44 -left-3/4`}>
+                    <div className={`external-div absolute flex items-center justify-evenly`} style={{width:'100%', height:'100%', transform: 'translateX(-50%)', transform: 'translateY(-50%)'}}>
                       {authorsForYear.map((author, authorIndex) => (
                         <AuthorCard
                           key={authorIndex}
                           {...author}
-                          isClicked={CLICKED_YEAR === years}
+                                                    isClicked={CLICKED_YEAR === years}
+                          
                           toggleHover={() => handleTickClick(years)}
                         />
                       ))}

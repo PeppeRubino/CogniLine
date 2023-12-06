@@ -1,0 +1,4 @@
+1: immagine piccola
+2: video youtube / REACT_APP_YOUTUBE_API_KEY
+3: Controllo generale filtri, etc
+4: Push
