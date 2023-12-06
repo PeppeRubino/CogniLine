@@ -145,7 +145,7 @@ useEffect(() => {
                 >
                   {HOVERED_YEAR === years && <h5 className='absolute -top-5 font-thin'>{years}</h5>}
                   {CLICKED_YEAR === years && (
-                    <div className={`external-div absolute flex items-center justify-evenly`} style={{width:'100%', height:'100%', transform: 'translateX(-50%)', transform: 'translateY(-50%)'}}>
+                    <div className={`external-div absolute flex items-center justify-evenly`} style={{ width: '100%', height: '100%', transform: 'translate(-50%, -50%)' }}>
                       {authorsForYear.map((author, authorIndex) => (
                         <AuthorCard
                           key={authorIndex}
