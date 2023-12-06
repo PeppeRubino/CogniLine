@@ -4,9 +4,9 @@ const YouTubeSearchBox = ({ authorName }) => {
   useEffect(() => {
     const loadYouTubeAPI = async () => {
       try {
-        const apiKey = 'AIzaSyAguU9f7vcFhm8xxUfBYddzzphQ-PFEW9M'; // Sostituisci con la tua chiave API
+        const key = 'AIzaSyAguU9f7vcFhm8xxUfBYddzzphQ-PFEW9M'; // Sostituisci con la tua chiave API
     
-        const response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${authorName}&maxResults=6&order=relevance&type=video&key=${apiKey}`);
+        const response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${authorName}&maxResults=6&order=relevance&type=video&key=${key}`);
         const data = await response.json();
     
         if (data.items && data.items.length > 0) {
