@@ -59,7 +59,7 @@ const AuthorCard = ({ name, category, specialized, description, year, works, ima
             <div className='-bottom-4 font-sm grid-flow-row w-full h-6 rounded-b-md text-white text-center' style={{ backgroundColor }}>{specialized}</div>
           </div>
           {/* YT API */}
-          <div className='grid-cols-2 bg-gray-700' style={{ minWidth: '30vw', height: '35vh' }}><YouTubeSearchBox authorName={name} /></div>
+          <div className='grid-cols-2 my-auto rounded-t-md rounded-b-md' style={{ minWidth: '30vw', height: '35vh', backgroundColor }}><YouTubeSearchBox authorName={name} /></div>
         </div>
       ) : (
         /* Versione piccola solo con l'immagine */
@@ -67,7 +67,7 @@ const AuthorCard = ({ name, category, specialized, description, year, works, ima
         <div className="div-content-sm relative -top-28 mx-6 rounded-md shadow-zinc-800 shadow-sm hover:shadow-zinc-800 hover:shadow-lg hover:scale-105 hover:transition-shadow" style={{ height: '25vh', width: '6em', backgroundColor }}>
           <h3 className='font-sm text-white text-center rounded-t-md bg-white p-1' style={{ color: backgroundColor, fontSize: '0.85em' }} >{category}</h3>
           <div className="author-image-small rounded-b-md">
-            <img className='object-cover rounded-b-md p-2' style={{ height: '8em', width: '6em' }} src={imagePath} alt={name} />
+            <img className='object-cover rounded-b-md p-2 relative' style={{ height: '8em', width: '6em' }} src={imagePath} alt={name} />
           </div>
         </div>
 
