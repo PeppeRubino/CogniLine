@@ -84,7 +84,7 @@ useEffect(() => {
       const delta = event.clientX - DRAG_START_X;
       setScrollX((prevScrollX) => prevScrollX + delta);
       setDragStartX(event.clientX);
-      timelineRef.current.style.cursor = 'grabbling';
+      timelineRef.current.style.cursor = 'grabbing';
     }
   }, [DRAG_START_X]);
 
