@@ -15,12 +15,12 @@ const YouTubeSearchBox = ({ authorName }) => {
           const id = data.items[0].id.videoId;
           setVideoId(id);
         } else {
-          console.log('Nessun video trovato per l\'autore:', authorName);
+          console.log('Wait for:', authorName);
           // Se nessun video è trovato, mostra il messaggio di errore dopo 5 secondi
           setTimeout(() => setShowErrorMessage(true), 5000);
         }
       } catch (error) {
-        console.error('Errore durante la richiesta API di YouTube:', error);
+        console.error(error);
         // In caso di errore, mostra il messaggio di errore dopo 5 secondi
         setTimeout(() => setShowErrorMessage(true), 5000);
       }
@@ -51,12 +51,12 @@ const YouTubeSearchBox = ({ authorName }) => {
   }, [authorName]);
 
   return (
-    <div className="flex items-center justify-center h-full w-full">
+    <div className="flex items-center justify-center h-full w-full relative select-none">
       {/* Aggiungi un messaggio se l'API di YouTube non è stata caricata con successo */}
       {showErrorMessage && (!window.YT || typeof window.YT.SearchBox === 'undefined') && (
-        <div>
-          <p>Errore durante il caricamento dell'API di YouTube.</p>
-          <p>Controlla la console del tuo browser per ulteriori dettagli.</p>
+        <div className='absolute text-center mx-2 text-white font-light'>
+          <span>Errore durante il caricamento dell'API di YouTube. <hr></hr>
+          Torna domani.</span>
         </div>
       )}
 
@@ -70,8 +70,9 @@ const YouTubeSearchBox = ({ authorName }) => {
             src={`https://www.youtube.com/embed/${videoId}`}
             allowFullScreen
           ></iframe>
-        ) : (
-          !showErrorMessage && <p>Nessun video trovato per l'autore: {authorName}</p>
+        ) : !showErrorMessage && (<div className='flex items-center justify-center text-white font-light'>
+             <p>Stiamo cercando: {authorName}</p>
+          </div>
         )}
       </div>
     </div>

@@ -113,7 +113,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="flex-raw items-center overflow-x-visible" style={{ marginTop: "30vh" }}>
+    <div className="flex-raw items-center overflow-x-visible select-none" style={{ marginTop: "30vh" }}>
       {/* Timeline */}
       <div
         className="timeline timeline-line bg-white shadow-md h-5 rounded-md z-40"
