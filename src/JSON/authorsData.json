@@ -15,7 +15,7 @@
   {
     "name": "Talete",
     "category": "Filosofia",
-    "specialized": "Filosofia Naturale",
+    "specialized": "Cosmologia",
     "year": -624,
     "description": "Talete è considerato uno dei primi filosofi della Grecia antica e fu il fondatore della scuola ionica di filosofia.",
     "image": "talete.png",
@@ -42,7 +42,7 @@
   {
     "name": "Eraclito",
     "category": "Filosofia",
-    "specialized": "Filosofia della Relazione",
+    "specialized": "Cosmologia",
     "year": -535,
     "description": "Eraclito è famoso per la sua concezione del cambiamento costante e della lotta degli opposti come forza motrice dell'universo.",
     "image": "eraclito.png",
@@ -51,7 +51,7 @@
   {
     "name": "Senofane di Colofone",
     "category": "Filosofia",
-    "specialized": "Metafisica",
+    "specialized": "Filosofia",
     "year": -570,
     "description": "Xenofane fu un filosofo itinerante noto per le sue critiche alle rappresentazioni degli dei antropomorfi e alle credenze religiose.",
     "image": "senofane.png",
@@ -69,7 +69,7 @@
   {
     "name": "Anassagora",
     "year": -500,
-    "specialization": "Filosofia Presocratica",
+    "specialization": "Cosmologia",
     "description": "Anassagora fu un filosofo presocratico noto per la sua teoria dell'Nous (mente) come principio ordinatore dell'universo, influenzando il pensiero successivo di Platone e Aristotele.",
     "image": "anassagora.png",
     "works": ["Testimonianze frammentarie"]
@@ -77,7 +77,7 @@
   {
     "name": "Zenone di Elea",
     "category": "Filosofia",
-    "specialized": "Metafisica",
+    "specialized": "Filosofia",
     "year": -490,
     "description": "Zenone è famoso per i suoi paradossi, che sfidano il concetto di movimento e dimostrano la coerenza dell'unità.",
     "image": "zenone.png",
@@ -86,7 +86,7 @@
   {
     "name": "Protagora",
     "category": "Filosofia",
-    "specialized": "Sofistica",
+    "specialized": "Sofismo",
     "year": -485,
     "description": "Protagora è uno dei principali sofisti, noto per il suo relativismo e la frase 'L'uomo è la misura di tutte le cose'.",
     "image": "protagora.png",
@@ -95,7 +95,7 @@
   {
     "name": "Gorgia",
     "category": "Filosofia",
-    "specialized": "Sofistica",
+    "specialized": "Sofismo",
     "year": -485,
     "description": "Gorgia è uno dei sofisti più influenti, noto per il suo scetticismo e il trattato 'Sulla Natura o il Niente'.",
     "image": "gorgia.png",
@@ -104,7 +104,7 @@
   {
     "name": "Democrito",
     "year": -460,
-    "specialization": "Atomismo",
+    "specialization": "Cosmologia",
     "description": "Democrito fu un filosofo presocratico e uno dei primi sostenitori dell'atomismo, l'idea che tutto è composto da particelle indivisibili chiamate atomi.",
     "image": "democrito.png",
     "works": ["Sulla Natura", "Testimonianze frammentarie"]
@@ -112,20 +112,19 @@
   {
     "name": "Socrate",
     "category": "Filosofia",
-    "specialized": null,
+    "specialized": "Filosofia",
     "year": -399,
     "decade": -390,
     "description": "Socrate, padre della filosofia occidentale, promuove il metodo dialettico nell'indagine filosofica.",
     "image": "socrate.png",
     "works": [
-      "Dialoghi Socratici",
-      "La Conoscenza come Virtù"
+      "Nessuna opera scritta"
     ]
   },
   {
     "name": "Platone",
     "category": "Filosofia",
-    "specialized": null,
+    "specialized": "Metafisica",
     "year": -427,
     "decade": -420,
     "description": "Platone, allievo di Socrate, sviluppa la teoria delle idee e influisce sulla filosofia della mente e dell'anima.",
@@ -138,7 +137,7 @@
   {
     "name": "Aristotele",
     "category": "Filosofia",
-    "specialized": null,
+    "specialized": "Metafisica",
     "year": -384,
     "decade": -380,
     "description": "Aristotele, filosofo e scienziato, esplora la psiche umana nelle sue opere filosofiche e scientifiche.",
@@ -151,7 +150,7 @@
   {
     "name": "Hippocrates",
     "category": "Medicina",
-    "specialized": null,
+    "specialized": "Medicina",
     "year": -460,
     "decade": -460,
     "description": "Ippocrate, noto come il padre della medicina, introduce concetti psicologici legati alla salute mentale.",
@@ -164,7 +163,7 @@
   {
     "name": "Galeno",
     "category": "Medicina",
-    "specialized": null,
+    "specialized": "Neuroscienze",
     "year": 129,
     "decade": 120,
     "description": "Galen, medico greco-romano, contribuisce alla comprensione del sistema nervoso e delle funzioni cognitive.",
@@ -176,8 +175,8 @@
   },
   {
     "name": "Johannes Kepler",
-    "category": "Filosofia della Scienza",
-    "specialized": null,
+    "category": "Filosofia",
+    "specialized": "Filosofia della Scienza",
     "year": 1571,
     "decade": 1570,
     "description": "Johannes Kepler, astronomo e filosofo, applica il metodo scientifico alla comprensione del sistema nervoso e delle percezioni sensoriali.",
@@ -203,7 +202,7 @@
   {
     "name": "John Locke",
     "category": "Filosofia",
-    "specialized": null,
+    "specialized": "Empirismo",
     "year": 1632,
     "decade": 1630,
     "description": "John Locke, filosofo empirista, influisce sulla psicologia empirica con il suo concetto di tabula rasa.",
@@ -216,7 +215,7 @@
   {
     "name": "Immanuel Kant",
     "category": "Filosofia",
-    "specialized": null,
+    "specialized": "Filosofia della Scienza",
     "year": 1724,
     "decade": 1720,
     "description": "Immanuel Kant, filosofo illuminista, influisce sullo sviluppo della psicologia teorica con la sua critica della ragion pura.",
@@ -228,8 +227,8 @@
   },
   {
     "name": "Hermann von Helmholtz",
-    "category": "Neuroscienze",
-    "specialized": null,
+    "category": "Fisiologia",
+    "specialized": "Neuroscienze",
     "year": 1821,
     "decade": 1820,
     "description": "Hermann von Helmholtz, fisiologo e fisico, contribuisce alle neuroscienze attraverso i suoi studi sulla percezione sensoriale e la fisiologia nervosa.",
@@ -241,8 +240,8 @@
   },
   {
     "name": "Paul Broca",
-    "category": "Neuroscienze",
-    "specialized": null,
+    "category": "Medicina",
+    "specialized": "Neuroscienze",
     "year": 1824,
     "decade": 1820,
     "description": "Paul Broca, medico e antropologo, scopre l'area di Broca nel cervello, collegando la neuroscienza all'linguaggio.",
@@ -281,8 +280,8 @@
   },
   {
     "name": "Camillo Golgi",
-    "category": "Neuroscienze",
-    "specialized": null,
+    "category": "Medicina",
+    "specialized": "Neuroscienze",
     "year": 1843,
     "decade": 1845,
     "description": "Camillo Golgi, medico e fisiologo italiano, sviluppa la tecnica della colorazione argento e contribuisce alla conoscenza dell'anatomia del sistema nervoso.",
@@ -371,11 +370,34 @@
     ]
   },
   {
+    "name": "Donald O. Hebb",
+    "category": "Neuroscienze",
+    "specialized": "Neuropsicologo",
+    "year": 1904,
+    "description": "Donald O. Hebb, neuropsicologo, è noto per la teoria dell'apprendimento basata sulla plasticità sinaptica.",
+    "image": "hebb.png",
+    "works": [
+      "Organizzazione del Comportamento",
+      "Teoria dell'Apprendimento"
+    ]
+  },
+  {
+    "name": "Solomon Asch",
+    "category": "Psicologia",
+    "specialized": "Psicologia Sociale",
+    "year": 1907,
+    "description": "Solomon Asch ha condotto esperimenti pionieristici sul conformismo, evidenziando come le persone siano influenzate dalle risposte errate degli altri anche in situazioni ovvie.",
+    "image": "asch.png",
+    "works": [
+      "Conformità",
+      "Esercizi di Gruppo e Psicoterapia"
+    ]
+  },
+  {
     "name": "Rita Levi-Montalcini",
     "category": "Neuroscienze",
     "specialized": "Neurologia",
     "year": 1909,
-    "decade": 1910,
     "description": "Rita Levi-Montalcini, neurologa italiana, scopre il fattore di crescita nervosa, contribuendo alla comprensione dello sviluppo del sistema nervoso.",
     "image": "montalcini.png",
     "works": [
@@ -384,11 +406,70 @@
     ]
   },
   {
+    "name": "Roger W. Sperry",
+    "category": "Neuroscienze",
+    "specialized": "Neuroscienze",
+    "year": 1913,
+    "description": "Roger W. Sperry, neuroscienziato, riceve il Nobel per la sua ricerca sull'emisfero cerebrale destro e sinistro.",
+    "image": "sperry.png",
+    "works": [
+      "Emisferi Cerebrali",
+      "Plasticità Neuronale"
+    ]
+  },
+  {
+    "name": "Mary Ainsworth",
+    "category": "Psicologia",
+    "specialized": "Teoria dell'Attaccamento",
+    "year": 1913,
+    "description": "Mary Ainsworth, psicologa dello sviluppo, contribuisce alla teoria dell'attaccamento nell'infanzia.",
+    "image": "ainsworth.png",
+    "works": [
+      "Schema dell'Attaccamento",
+      "Ricerca sull'Attaccamento Materno"
+    ]
+  },
+  {
+    "name": "Aaron T. Beck",
+    "category": "Psicologia",
+    "specialized": "Terapia Cognitiva",
+    "year": 1921,
+    "description": "Aaron T. Beck, psichiatra, è uno dei fondatori della terapia cognitiva, influenzando il trattamento delle malattie mentali.",
+    "image": "beck.png",
+    "works": [
+      "Terapia Cognitiva delle Psicosi",
+      "Depressione: Cause e Trattamento"
+    ]
+  },
+  {
+    "name": "Albert Bandura",
+    "category": "Psicologia",
+    "specialized": "Teoria dell'Apprendimento Sociale",
+    "year": 1925,
+    "description": "Albert Bandura, psicologo, sviluppa la teoria dell'apprendimento sociale, evidenziando il ruolo dell'osservazione e dell'imitazione nel comportamento umano.",
+    "image": "bandura.png",
+    "works": [
+      "Apprendimento Sociale",
+      "Teoria dell'Autoefficacia"
+    ]
+  },
+  {
+    "name": "Noam Chomsky",
+    "category": "Psicologia",
+    "specialized": "Linguistica Cognitiva",
+    "year": 1928,
+    "description": "Noam Chomsky, linguista e cognitivista, rivoluziona lo studio del linguaggio e della mente con la sua teoria generativa della grammatica.",
+    "image": "chomsky.png",
+    "works": [
+      "Strutture Sintattiche",
+      "La Rivoluzione Copernicana"
+    ]
+  },
+  {
     "name": "Eric Kandel",
     "category": "Neuroscienze",
     "specialized": "Neuroscienze",
     "year": 1929,
-    "decade": 1930,
     "description": "Eric Kandel, neuroscienziato, riceve il Nobel per la sua ricerca sulle basi cellulari della memoria nel sistema nervoso.",
     "image": "kandel.png",
     "works": [
@@ -397,209 +478,112 @@
     ]
   },
   {
+    "name": "Jerome Kagan",
+    "category": "Psicologia",
+    "specialized": "Psicologia dello Sviluppo",
+    "year": 1929,
+    "description": "Jerome Kagan, psicologo dello sviluppo, studia la temperanza infantile e l'ansia.",
+    "image": "kagan.png",
+    "works": [
+      "Il Temperamento Infantile",
+      "Studio sull'Ansia Infantile"
+    ]
+  },
+  {
+    "name": "Ursula Bellugi",
+    "category": "Neuroscienze",
+    "specialized": "Neuropsicologia",
+    "year": 1931,
+    "description": "Ursula Bellugi, neuropsicologa, contribuisce allo studio delle anomalie linguistiche nei pazienti con sindrome di Williams.",
+    "image": "bellugi.png",
+    "works": [
+      "Neuropsicologia della Sindrome di Williams",
+      "Linguaggio e Cervello"
+    ]
+  },
+  {
+    "name": "Philip Zimbardo",
+    "category": "Psicologia",
+    "specialized": "Psicologia Sociale",
+    "year": 1933,
+    "description": "Philip Zimbardo è noto per l'esperimento delle carceri di Stanford, che ha esaminato il comportamento dei partecipanti in un ambiente simulato di prigione, evidenziando il rapido adattamento ai ruoli assegnati.",
+    "image": "zimbardo.png",
+    "works": [
+      "L'Effetto Lucifero",
+      "La Psicologia del Male"
+    ]
+  },
+  {
+    "name": "Stanley Milgram",
+    "category": "Psicologia",
+    "specialized": "Psicologia Sociale",
+    "year": 1933,
+    "description": "Stanley Milgram è famoso per l'esperimento sull'obbedienza, che ha esaminato fino a che punto le persone sono disposte a infliggere dolore agli altri in risposta a un'autorità.",
+    "image": "milgram.png",
+    "works": [
+      "Sottomissione alla Autorità",
+      "La Percezione dell'Autorità"
+    ]
+  },
+  {
+    "name": "Oliver Sacks",
+    "category": "Neuroscienze",
+    "specialized": "Neurologia",
+    "year": 1933,
+    "description": "Oliver Sacks, neurologo e scrittore, divulgatore scientifico, racconta storie di pazienti affetti da disturbi neurologici in modo accessibile al pubblico.",
+    "image": "sacks.png",
+    "works": [
+      "L'uomo che scambiò sua moglie per un cappello",
+      "Ve l'ho raccontato",
+      "L'isola dei senza colore"
+    ]
+  },
+  {
     "name": "Michael Gazzaniga",
     "category": "Neuroscienze",
     "specialized": "Neuroscienze",
     "year": 1939,
-    "decade": 1940,
     "description": "Michael Gazzaniga, neuroscienziato, è noto per le sue ricerche sulle funzioni cognitive emisferiche e la lateralizzazione cerebrale.",
     "image": "gazzaniga.png",
     "works": [
       "Lateralizzazione Cerebrale",
       "Cervello Diviso"
     ]
+  },   
+   {
+    "name": "Antonio Damasio",
+    "category": "Neuroscienze",
+    "specialized": "Neurobiologia delle Emozioni",
+    "year": 1944,
+    "description": "Antonio Damasio, neuroscienziato, esplora le basi biologiche delle emozioni e il ruolo del cervello nel processo decisionale.",
+    "image": "damasio.png",
+    "works": [
+      "Emozione e Coscienza",
+      "L'Errore di Cartesio"
+    ]
   },
-    {
-      "name": "Donald O. Hebb 0000",
-      "category": "Neuroscienze",
-      "specialized": "Neuropsicologo",
-      "year": 1904,
-      "decade": 1905,
-      "description": "Donald O. Hebb, neuropsicologo, è noto per la teoria dell'apprendimento basata sulla plasticità sinaptica.",
-      "image": "hebb.png",
-      "works": [
-        "Organizzazione del Comportamento",
-        "Teoria dell'Apprendimento"
-      ]
-    },
-    {
-      "name": "Noam Chomsky",
-      "category": "Psicologia",
-      "specialized": "Linguistica Cognitiva",
-      "year": 1928,
-      "decade": 1930,
-      "description": "Noam Chomsky, linguista e cognitivista, rivoluziona lo studio del linguaggio e della mente con la sua teoria generativa della grammatica.",
-      "image": "chomsky.png",
-      "works": [
-        "Strutture Sintattiche",
-        "La Rivoluzione Copernicana"
-      ]
-    },
-    {
-      "name": "Aaron T. Beck",
-      "category": "Psicologia",
-      "specialized": "Terapia Cognitiva",
-      "year": 1921,
-      "decade": 1920,
-      "description": "Aaron T. Beck, psichiatra, è uno dei fondatori della terapia cognitiva, influenzando il trattamento delle malattie mentali.",
-      "image": "beck.png",
-      "works": [
-        "Terapia Cognitiva delle Psicosi",
-        "Depressione: Cause e Trattamento"
-      ]
-    },
-    {
-      "name": "Albert Bandura",
-      "category": "Psicologia",
-      "specialized": "Teoria dell'Apprendimento Sociale",
-      "year": 1925,
-      "decade": 1920,
-      "description": "Albert Bandura, psicologo, sviluppa la teoria dell'apprendimento sociale, evidenziando il ruolo dell'osservazione e dell'imitazione nel comportamento umano.",
-      "image": "bandura.png",
-      "works": [
-        "Apprendimento Sociale",
-        "Teoria dell'Autoefficacia"
-      ]
-    },
-    {
-      "name": "Roger W. Sperry",
-      "category": "Neuroscienze",
-      "specialized": "Neuroscienze",
-      "year": 1913,
-      "decade": 1910,
-      "description": "Roger W. Sperry, neuroscienziato, riceve il Nobel per la sua ricerca sull'emisfero cerebrale destro e sinistro.",
-      "image": "sperry.png",
-      "works": [
-        "Emisferi Cerebrali",
-        "Plasticità Neuronale"
-      ]
-    },
-    {
-      "name": "Ursula Bellugi",
-      "category": "Neuroscienze",
-      "specialized": "Neuropsicologia",
-      "year": 1931,
-      "decade": 1930,
-      "description": "Ursula Bellugi, neuropsicologa, contribuisce allo studio delle anomalie linguistiche nei pazienti con sindrome di Williams.",
-      "image": "bellugi.png",
-      "works": [
-        "Neuropsicologia della Sindrome di Williams",
-        "Linguaggio e Cervello"
-      ]
-    },
-    {
-      "name": "Oliver Sacks",
-      "category": "Neuroscienze",
-      "specialized": "Neurologia",
-      "year": 1933,
-      "decade": 1930,
-      "description": "Oliver Sacks, neurologo e scrittore, divulgatore scientifico, racconta storie di pazienti affetti da disturbi neurologici in modo accessibile al pubblico.",
-      "image": "sacks.png",
-      "works": [
-        "L'uomo che scambiò sua moglie per un cappello",
-        "Ve l'ho raccontato",
-        "L'isola dei senza colore"
-      ]
-    },
+  {
+    "name": "Elkhonon Goldberg",
+    "category": "Neuroscienze",
+    "specialized": "Neuropsicologia",
+    "year": 1946,
+    "description": "Elkhonon Goldberg, neuropsicologo, contribuisce allo studio dell'ematocritica e della lateralizzazione cerebrale.",
+    "image": "goldberg.png",
+    "works": [
+      "L'emisfero destro",
+      "La Creatività"
+    ]
+  },
     {
       "name": "Richard Davidson",
       "category": "Neuroscienze",
       "specialized": "Neuroscienze Affective",
       "year": 1951,
-      "decade": 1950,
       "description": "Richard Davidson, neuroscienziato, è noto per la sua ricerca sulle basi neurali dell'emozione e della regolazione emotiva.",
       "image": "davidson.png",
       "works": [
         "Neuroscienze Affective",
         "Benessere Emotivo"
-      ]
-    },
-    {
-      "name": "Elkhonon Goldberg",
-      "category": "Neuroscienze",
-      "specialized": "Neuropsicologia",
-      "year": 1946,
-      "decade": 1940,
-      "description": "Elkhonon Goldberg, neuropsicologo, contribuisce allo studio dell'ematocritica e della lateralizzazione cerebrale.",
-      "image": "goldberg.png",
-      "works": [
-        "L'emisfero destro",
-        "La Creatività"
-      ]
-    },
-    {
-      "name": "Antonio Damasio",
-      "category": "Neuroscienze",
-      "specialized": "Neurobiologia delle Emozioni",
-      "year": 1944,
-      "decade": 1940,
-      "description": "Antonio Damasio, neuroscienziato, esplora le basi biologiche delle emozioni e il ruolo del cervello nel processo decisionale.",
-      "image": "damasio.png",
-      "works": [
-        "Emozione e Coscienza",
-        "L'Errore di Cartesio"
-      ]
-    },
-    {
-      "name": "Mary Ainsworth",
-      "category": "Psicologia",
-      "specialized": "Teoria dell'Attaccamento",
-      "year": 1913,
-      "decade": 1910,
-      "description": "Mary Ainsworth, psicologa dello sviluppo, contribuisce alla teoria dell'attaccamento nell'infanzia.",
-      "image": "ainsworth.png",
-      "works": [
-        "Schema dell'Attaccamento",
-        "Ricerca sull'Attaccamento Materno"
-      ]
-    },
-    {
-      "name": "Jerome Kagan",
-      "category": "Psicologia",
-      "specialized": "Psicologia dello Sviluppo",
-      "year": 1929,
-      "decade": 1930,
-      "description": "Jerome Kagan, psicologo dello sviluppo, studia la temperanza infantile e l'ansia.",
-      "image": "kagan.png",
-      "works": [
-        "Il Temperamento Infantile",
-        "Studio sull'Ansia Infantile"
-      ]
-    },
-    {
-      "name": "Philip Zimbardo",
-      "category": "Psicologia",
-      "specialized": "Psicologia Sociale",
-      "year": 1933,
-      "description": "Philip Zimbardo è noto per l'esperimento delle carceri di Stanford, che ha esaminato il comportamento dei partecipanti in un ambiente simulato di prigione, evidenziando il rapido adattamento ai ruoli assegnati.",
-      "image": "zimbardo.png",
-      "works": [
-        "L'Effetto Lucifero",
-        "La Psicologia del Male"
-      ]
-    },
-    {
-      "name": "Solomon Asch",
-      "category": "Psicologia",
-      "specialized": "Psicologia Sociale",
-      "year": 1907,
-      "description": "Solomon Asch ha condotto esperimenti pionieristici sul conformismo, evidenziando come le persone siano influenzate dalle risposte errate degli altri anche in situazioni ovvie.",
-      "image": "asch.png",
-      "works": [
-        "Conformità",
-        "Esercizi di Gruppo e Psicoterapia"
-      ]
-    },
-    {
-      "name": "Stanley Milgram",
-      "category": "Psicologia",
-      "specialized": null,
-      "year": 1933,
-      "description": "Stanley Milgram è famoso per l'esperimento sull'obbedienza, che ha esaminato fino a che punto le persone sono disposte a infliggere dolore agli altri in risposta a un'autorità.",
-      "image": "milgram.png",
-      "works": [
-        "Sottomissione alla Autorità",
-        "La Percezione dell'Autorità"
       ]
     }
   ]
