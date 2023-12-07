@@ -21,6 +21,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const [TOTAL_TICKS, setTotalTicks] = useState(0);
   const [TODAY_TICK, setTodayTick] = useState(0);
   const [HOVERED_YEAR, setHoveredYear] = useState(null);
+  const [openAuthor, setOpenAuthor] = useState(null);
 
 
   // Function to filter authors for a specific year
@@ -83,7 +84,7 @@ useEffect(() => {
       const delta = event.clientX - DRAG_START_X;
       setScrollX((prevScrollX) => prevScrollX + delta);
       setDragStartX(event.clientX);
-      timelineRef.current.style.cursor = 'grabbing';
+      timelineRef.current.style.cursor = 'grabbling';
     }
   }, [DRAG_START_X]);
 
@@ -108,7 +109,7 @@ useEffect(() => {
   // Handle mouse wheel event for scrolling the timeline
   const handleMouseWheel = (event) => {
     const delta = event.deltaX || event.deltaY; // Use deltaX for horizontal scrolling, deltaY for vertical scrolling
-    setScrollX((prevScrollX) => prevScrollX + delta * 3);
+    setScrollX((prevScrollX) => prevScrollX + delta * 2);
   };
 
   return (
@@ -156,6 +157,9 @@ useEffect(() => {
                           {...author}
                           isClicked={CLICKED_YEAR === years}
                           toggleHover={() => handleTickClick(years)}
+                          openAuthor={openAuthor}  // Passa openAuthor come prop
+                        setOpenAuthor={setOpenAuthor} 
+                        authorName={author.name}
                         />
                       ))}
                     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import YouTubeSearchBox from './YouTubeSearchBox';
 
 const categoryColors = {
@@ -14,17 +14,24 @@ const categoryColors = {
   Fisiologia: 'rgba(0, 128, 0, 0.5)', // Dark Green
 };
 
-const AuthorCard = ({ name, category, specialized, description, year, works, image, toggleHover, index }) => {
-  const [isClicked, setIsClicked] = useState(false);
+const AuthorCard = ({ name, category, specialized, description, year, works, image, toggleHover, index, openAuthor, setOpenAuthor }) => {
+  const isClicked = openAuthor === name;
   const imagePath = `${process.env.PUBLIC_URL}/media/img/${image}`;
   const backgroundColor = categoryColors[category];
 
   const handleClick = () => {
-
-    setIsClicked(!isClicked);
-    toggleHover(index, !isClicked, year);
-    console.log(imagePath)
+    if (isClicked) {
+      // Chiudi l'immagine grande se l'autore attualmente aperto è cliccato di nuovo
+      toggleHover(index, false, name);
+      setOpenAuthor(null);
+    } else {
+      // Chiudi l'immagine grande precedente, se presente
+      // Apri l'immagine grande
+      toggleHover(index, true, name);
+      setOpenAuthor(name);
+    }
   };
+  
   return (
     <div
       className={`internal-div flex justify-evenly items-center ${category}`}
