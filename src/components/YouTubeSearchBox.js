@@ -7,7 +7,7 @@ const YouTubeSearchBox = ({ authorName }) => {
   useEffect(() => {
     const loadYouTubeAPI = async () => {
       try {
-        const key = 'AIzaSyAguU9f7vcFhm8xxUfBYddzzphQ-PFEW9M';
+        const key = process.env.REACT_APP_YOUTUBE_API_KEY;
         const response = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=${authorName}&maxResults=1&order=relevance&type=video&key=${key}`);
         const data = await response.json();
 
