@@ -83,6 +83,7 @@ useEffect(() => {
       const delta = event.clientX - DRAG_START_X;
       setScrollX((prevScrollX) => prevScrollX + delta);
       setDragStartX(event.clientX);
+      timelineRef.current.style.cursor = 'grabbing';
     }
   }, [DRAG_START_X]);
 
@@ -95,6 +96,9 @@ useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
 
+    // Aggiungi l'opzione passive: true
+  document.addEventListener('wheel', handleMouseWheel, { passive: true });
+  
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);

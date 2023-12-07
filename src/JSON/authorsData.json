@@ -13,6 +13,103 @@
     ]
   },
   {
+    "name": "Talete",
+    "category": "Filosofia",
+    "specialized": "Filosofia Naturale",
+    "year": -624,
+    "description": "Talete è considerato uno dei primi filosofi della Grecia antica e fu il fondatore della scuola ionica di filosofia.",
+    "image": "talete.png",
+    "works": ["Frammenti delle Opere"]
+  },
+  {
+    "name": "Anassimene",
+    "category": "Filosofia",
+    "specialized": "Filosofia Naturale",
+    "year": -585,
+    "description": "Anassimene fu un filosofo pre-socratico noto per le sue teorie sulla natura e l'aria come principio fondamentale.",
+    "image": "anassimene.png",
+    "works": ["Frammenti delle Opere"]
+  },
+  {
+    "name": "Anassimandro",
+    "category": "Filosofia",
+    "specialized": "Cosmologia",
+    "year": -610,
+    "description": "Anassimandro fu un allievo di Talete e un pensatore chiave nella scuola ionica. È noto per la sua concezione cosmologica.",
+    "image": "anassimandro.png",
+    "works": ["Frammenti delle Opere"]
+  },
+  {
+    "name": "Eraclito",
+    "category": "Filosofia",
+    "specialized": "Filosofia della Relazione",
+    "year": -535,
+    "description": "Eraclito è famoso per la sua concezione del cambiamento costante e della lotta degli opposti come forza motrice dell'universo.",
+    "image": "eraclito.png",
+    "works": ["Frammenti delle Opere"]
+  },
+  {
+    "name": "Senofane di Colofone",
+    "category": "Filosofia",
+    "specialized": "Metafisica",
+    "year": -570,
+    "description": "Xenofane fu un filosofo itinerante noto per le sue critiche alle rappresentazioni degli dei antropomorfi e alle credenze religiose.",
+    "image": "senofane.png",
+    "works": ["Frammenti delle Opere"]
+  },
+  {
+    "name": "Parmenide",
+    "category": "Filosofia",
+    "specialized": "Metafisica",
+    "year": -515,
+    "description": "Parmenide è noto per i suoi dialoghi filosofici sulla natura dell'essere e del non essere.",
+    "image": "parmenide.png",
+    "works": ["Frammenti delle Opere"]
+  },
+  {
+    "name": "Anassagora",
+    "year": -500,
+    "specialization": "Filosofia Presocratica",
+    "description": "Anassagora fu un filosofo presocratico noto per la sua teoria dell'Nous (mente) come principio ordinatore dell'universo, influenzando il pensiero successivo di Platone e Aristotele.",
+    "image": "anassagora.png",
+    "works": ["Testimonianze frammentarie"]
+  },
+  {
+    "name": "Zenone di Elea",
+    "category": "Filosofia",
+    "specialized": "Metafisica",
+    "year": -490,
+    "description": "Zenone è famoso per i suoi paradossi, che sfidano il concetto di movimento e dimostrano la coerenza dell'unità.",
+    "image": "zenone.png",
+    "works": ["Frammenti delle Opere"]
+  },
+  {
+    "name": "Protagora",
+    "category": "Filosofia",
+    "specialized": "Sofistica",
+    "year": -485,
+    "description": "Protagora è uno dei principali sofisti, noto per il suo relativismo e la frase 'L'uomo è la misura di tutte le cose'.",
+    "image": "protagora.png",
+    "works": ["Frammenti delle Opere"]
+  },
+  {
+    "name": "Gorgia",
+    "category": "Filosofia",
+    "specialized": "Sofistica",
+    "year": -485,
+    "description": "Gorgia è uno dei sofisti più influenti, noto per il suo scetticismo e il trattato 'Sulla Natura o il Niente'.",
+    "image": "gorgia.png",
+    "works": ["Frammenti delle Opere"]
+  },
+  {
+    "name": "Democrito",
+    "year": -460,
+    "specialization": "Atomismo",
+    "description": "Democrito fu un filosofo presocratico e uno dei primi sostenitori dell'atomismo, l'idea che tutto è composto da particelle indivisibili chiamate atomi.",
+    "image": "democrito.png",
+    "works": ["Sulla Natura", "Testimonianze frammentarie"]
+  },
+  {
     "name": "Socrate",
     "category": "Filosofia",
     "specialized": null,
@@ -474,7 +571,6 @@
       "category": "Psicologia",
       "specialized": "Psicologia Sociale",
       "year": 1933,
-      "decade": 1930,
       "description": "Philip Zimbardo è noto per l'esperimento delle carceri di Stanford, che ha esaminato il comportamento dei partecipanti in un ambiente simulato di prigione, evidenziando il rapido adattamento ai ruoli assegnati.",
       "image": "zimbardo.png",
       "works": [
@@ -487,7 +583,6 @@
       "category": "Psicologia",
       "specialized": "Psicologia Sociale",
       "year": 1907,
-      "decade": 1900,
       "description": "Solomon Asch ha condotto esperimenti pionieristici sul conformismo, evidenziando come le persone siano influenzate dalle risposte errate degli altri anche in situazioni ovvie.",
       "image": "asch.png",
       "works": [
@@ -500,7 +595,6 @@
       "category": "Psicologia",
       "specialized": null,
       "year": 1933,
-      "decade": 1930,
       "description": "Stanley Milgram è famoso per l'esperimento sull'obbedienza, che ha esaminato fino a che punto le persone sono disposte a infliggere dolore agli altri in risposta a un'autorità.",
       "image": "milgram.png",
       "works": [
