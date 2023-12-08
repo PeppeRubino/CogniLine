@@ -14,7 +14,7 @@ const Footer = () => {
         </div>
   
         {showDeclaration && (
-          <div onClick={toggleDeclaration} className="w-screen p-10 flex items-center justify-center h-screen bg-zinc-800 absolute z-20 -top-0 text-center text-white">
+          <div onClick={toggleDeclaration} className="w-screen p-10 flex items-center justify-center h-screen bg-zinc-800 absolute z-20 -top-0 text-center text-white" style={{ fontSize: '0.8em' }}>
             <div>
             <h1>Declaration for a Better World.</h1>
 
