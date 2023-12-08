@@ -109,6 +109,33 @@ useEffect(() => {
       document.removeEventListener('wheel', handleMouseWheel);
     };
   }, [handleMouseMove, handleMouseUp, handleMouseWheel, START_YEAR_STATE]);
+  const handleTouchStart = useCallback((event) => {
+    setDragStartX(event.touches[0].clientX);
+  }, []);
+
+  const handleTouchMove = useCallback((event) => {
+    if (DRAG_START_X !== null) {
+      const delta = event.touches[0].clientX - DRAG_START_X;
+      setScrollX((prevScrollX) => prevScrollX + delta);
+      setDragStartX(event.touches[0].clientX);
+    }
+  }, [DRAG_START_X]);
+
+  const handleTouchEnd = useCallback(() => {
+    setDragStartX(null);
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchmove', handleTouchMove);
+      document.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [handleTouchStart, handleTouchMove, handleTouchEnd, START_YEAR_STATE]);
 
   return (
     <div className="flex-raw items-center overflow-x-visible select-none" style={{marginTop:'30vh'}}>
@@ -120,6 +147,9 @@ useEffect(() => {
           handleMouseEnter();
           setDragStartX(e.clientX);
         }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         onWheel={handleMouseWheel}
         ref={timelineRef}
         style={{ width: `${TOTAL_TICKS * TICK_DISTANCE}px`, transform: `translateX(${SCROLL_X}px)`,   animation: 'slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards' }}
