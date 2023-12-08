@@ -93,27 +93,25 @@ useEffect(() => {
     timelineRef.current.style.cursor = 'grab';
   }, []);
 
+  const handleMouseWheel = useCallback((event) => {
+    const delta = event.deltaX || event.deltaY;
+    setScrollX((prevScrollX) => prevScrollX + delta * 1.5);
+  }, []);
+
   useEffect(() => {
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener('wheel', handleMouseWheel, { passive: true });
 
-    // Aggiungi l'opzione passive: true
-  document.addEventListener('wheel', handleMouseWheel, { passive: true });
-  
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener('wheel', handleMouseWheel);
     };
-  }, [handleMouseMove, handleMouseUp, START_YEAR_STATE]);
-
-  // Handle mouse wheel event for scrolling the timeline
-  const handleMouseWheel = (event) => {
-    const delta = event.deltaX || event.deltaY; // Use deltaX for horizontal scrolling, deltaY for vertical scrolling
-    setScrollX((prevScrollX) => prevScrollX + delta * 2);
-  };
+  }, [handleMouseMove, handleMouseUp, handleMouseWheel, START_YEAR_STATE]);
 
   return (
-    <div className="flex-raw items-center overflow-x-visible select-none" style={{ marginTop: "30vh" }}>
+    <div className="flex-raw items-center overflow-x-visible select-none" style={{marginTop:'30vh'}}>
       {/* Timeline */}
       <div
         className="timeline timeline-line bg-white shadow-md h-5 rounded-md z-40"
@@ -124,7 +122,7 @@ useEffect(() => {
         }}
         onWheel={handleMouseWheel}
         ref={timelineRef}
-        style={{ width: `${TOTAL_TICKS * TICK_DISTANCE}px`, transform: `translateX(${SCROLL_X}px)` }}
+        style={{ width: `${TOTAL_TICKS * TICK_DISTANCE}px`, transform: `translateX(${SCROLL_X}px)`,   animation: 'slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards' }}
 
       >
         {/* Today's timeline start */}

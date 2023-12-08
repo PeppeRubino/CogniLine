@@ -10,7 +10,7 @@ const YearFilter = ({ onFilterYear }) => {
   };
 
   return (
-    <div className='grid grid-flow-col gap-2'>
+    <div className=''>
       <input
         type="number"
         id="yearFilter"
