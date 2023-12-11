@@ -2,14 +2,14 @@ import React from 'react';
 import YouTubeSearchBox from './YouTubeSearchBox';
 
 const categoryColors = {
-  Neuroscienze: 'rgba(255, 0, 0, 0.5)', // Red
-  Psicologia: 'rgba(0, 255, 0, 0.5)', // Green
-  Medicina: 'rgba(100, 255, 100, 0.5)', // Green
-  Filosofia: 'rgba(255, 0, 255, 0.5)', // Magenta
-  Metafisica: 'rgba(0, 155, 255, 0.8)', // Cyan
-  Sociologia: 'rgba(128, 0, 128, 0.5)', // Purple
-  Pedagogia: 'rgba(255, 165, 0, 0.5)', // Orange
-  Fisiologia: 'rgba(0, 128, 0, 0.5)', // Dark Green
+  Neuroscienze: 'rgba(255, 92, 92, 0.8)',    // Rosso: stimolante, energico
+  Psicologia: 'rgba(92, 184, 92, 0.8)',    // Verde: rilassante, equilibrato
+  Medicina: 'rgba(138, 235, 167, 0.8)',    // Verde acqua: fresco, rassicurante
+  Filosofia: 'rgba(255, 92, 255, 0.8)',   // Magenta: creativo, unico
+  Metafisica: 'rgba(92, 184, 255, 0.8)',  // Blu chiaro: ispirante, tranquillo
+  Sociologia: 'rgba(184, 92, 184, 0.8)',  // Viola scuro: misterioso, sofisticato
+  Pedagogia: 'rgba(255, 188, 92, 0.8)',   // Arancione: accogliente, amichevole
+  Fisiologia: 'rgba(92, 184, 92, 0.8)'    // Verde scuro: rigenerante, fresco  
 };
 
 const AuthorCard = ({ name, category, specialized, description, year, works, image, toggleHover, index, openAuthor, setOpenAuthor }) => {

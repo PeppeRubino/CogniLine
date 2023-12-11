@@ -264,7 +264,7 @@
     "specialized": "Medicina Generale",
     "description": "Medico e traduttore, introdusse opere mediche arabe in Europa.",
     "year": 1020,
-    "image": "costantino.png",
+    "image": "lafricano.png",
     "works": ["Nessuna opera disponibile"]
   },
   {
@@ -273,7 +273,7 @@
     "specialized": "Teologia e Filosofia",
     "year": 1225,
     "description": "San Tommaso d'Acquino, teologo e filosofo medioevale, integrò la filosofia aristotelica con la teologia cristiana. La sua opera più nota, la 'Summa Theologica', affronta una vasta gamma di questioni teologiche e filosofiche.",
-    "image": "san_tommaso_acquino.png",
+    "image": "dacquino.png",
     "works": [
       "Summa Theologica",
       "Summa contra Gentiles"
@@ -286,7 +286,7 @@
     "year": 1287,
     "decade": 1300,
     "description": "Guglielmo d'Ockham, filosofo e teologo inglese, è noto per il nominalismo, una corrente filosofica che sostiene che gli universali sono solo nomi, non realtà. La sua 'Navis Logica' è un'opera importante nel contesto del nominalismo.",
-    "image": "guglielmo_dockham.png",
+    "image": "ockham.png",
     "works": [
       "Navis Logica",
       "Summa Logicae"
@@ -620,7 +620,7 @@
   },
   {
     "name": "Anna Freud",
-    "category": "Psicoanalisi",
+    "category": "Psicologia",
     "specialized": "Psicoanalisi dell'Infanzia",
     "year": 1895,
     "description": "Anna Freud, figlia di Sigmund Freud, è stata una psicoanalista austriaca. Si specializzò nella psicoanalisi dell'infanzia e contribuì allo sviluppo della psicologia dell'io. Fondò la Hampstead Child Therapy Course and Clinic.",
