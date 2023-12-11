@@ -171,14 +171,14 @@ useEffect(() => {
             <React.Fragment key={index}>
               {isVisible && (
                 <div
-                  className={`timeline-tick absolute h-3 w-1 p-1 cursor-pointer text-gray-600 ${CLICKED_YEAR === years ? 'bg-blue-500 absolute' : 'bg-gray-600'}`}
+                  className={`timeline-tick absolute h-3 w-1 p-1 cursor-pointer text-gray-600 ${CLICKED_YEAR === years ? 'bg-blue-500' : 'bg-gray-600'}`}
                   style={{ ...tickStyle, top: 0 }}
                   onClick={() => handleTickClick(years)}
                   onMouseEnter={() => setHoveredYear(years)}
                 >
                   {HOVERED_YEAR === years && <h5 className='absolute -top-5 font-thin'>{years}</h5>}
                   {CLICKED_YEAR === years && (
-                    <div className={`external-div absolute flex items-center justify-evenly`} style={{ width: '100%', height: '100%', transform: 'translate(-50%, -50%)' }}>
+                    <div className={`external-div flex items-center relative w-full h-full`}>
                       {authorsForYear.map((author, authorIndex) => (
                         <AuthorCard
                           key={authorIndex}
