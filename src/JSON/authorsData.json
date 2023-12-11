@@ -32,7 +32,7 @@
   {
     "name": "Anassimene",
     "category": "Filosofia",
-    "specialized": "Filosofia Naturale",
+    "specialized": "Filosofia Naturale - Cosmologica",
     "year": -585,
     "description": "Anassimene fu un filosofo pre-socratico noto per le sue teorie sulla natura e l'aria come principio fondamentale cosmologico.",
     "image": "anassimene.png",
@@ -41,7 +41,7 @@
   {
     "name": "Senofane di Colofone",
     "category": "Filosofia",
-    "specialized": "Filosofia",
+    "specialized": "Filosofia Generale",
     "year": -570,
     "description": "Senofane, filosofo errante, è celebre per le sue critiche alle rappresentazioni degli dei antropomorfi e alle credenze religiose. La sua riflessione distintiva suggerisce che, se i cavalli potessero concepire divinità, le immaginerebbero come cavalli, evidenziando la relatività delle credenze divine.",
     "image": "senofane.png",
@@ -68,6 +68,7 @@
   {
     "name": "Anassagora",
     "year": -500,
+    "category": "Filosofia",
     "specialization": "Cosmologia",
     "description": "Anassagora, filosofo presocratico, è rinomato per la sua teoria dell'Nous (mente) come principio ordinatore dell'universo, influenzando le menti di Platone e Aristotele. La sua fama si estende anche alla teoria dei semi, distinguendosi da Democrito per l'attribuzione di caratteristiche qualitative a tali elementi.",
     "image": "anassagora.png",
@@ -85,7 +86,7 @@
   {
     "name": "Zenone di Elea",
     "category": "Filosofia",
-    "specialized": "Filosofia",
+    "specialized": "Filosofia Generale",
     "year": -490,
     "description": "Zenone è noto per i suoi paradossi, che sfidano il concetto di movimento e dimostrano la coerenza dell'unità. Il suo metodo 'per assurdo' sottolinea l'importanza e la possibilità di ragionare sui fenomeni prima dell'esperimento, consentendo l'analisi di possibilità momentaneamente inosservabili e al di là delle attuali possibilità sperimentali.",
     "image": "zenone.png",
@@ -94,7 +95,7 @@
   {
     "name": "Protagora",
     "category": "Filosofia",
-    "specialized": "Sofismo",
+    "specialized": "Sofismo e Dialettica",
     "year": -485,
     "description": "Protagora è uno dei principali sofisti, famoso per il suo relativismo e la celebre frase 'L'uomo è la misura di tutte le cose'. Con Protagora e i sofisti, la filosofia abbandona la ricerca della verità assoluta, poiché la considerano soggettiva. In questo contesto, nasce l'importanza della ragione del dialogo, anche se non si esprime la verità. La ricerca della verità diviene un processo di convinzione dell'altro.",
     "image": "protagora.png",
@@ -103,7 +104,7 @@
   {
     "name": "Gorgia",
     "category": "Filosofia",
-    "specialized": "Sofismo",
+    "specialized": "Sofismo e Dialettica",
     "year": -485,
     "description": "Gorgia è uno dei sofisti più influenti, celebre per il suo scetticismo e il trattato 'Sulla Natura o il Niente'. È particolarmente noto per aver affrontato la questione di Elena di Troia, sottolineando che entrambe le parti coinvolte possono avere le proprie ragioni e che la verità assoluta potrebbe rimanere inaccessibile.",
     "image": "gorgia.png",
@@ -120,7 +121,7 @@
   {
     "name": "Hippocrates",
     "category": "Medicina",
-    "specialized": "Medicina",
+    "specialized": "Medicina Generale",
     "year": -460,
     "description": "Ippocrate, noto come il padre della medicina, introduce concetti psicologici legati alla salute mentale.",
     "image": "ippocrate.png",
@@ -132,7 +133,7 @@
   {
     "name": "Socrate",
     "category": "Filosofia",
-    "specialized": "Filosofia",
+    "specialized": "Filosofia Generale e Dialettica",
     "year": -399,
     "description": "Socrate, riconosciuto come il padre della filosofia occidentale, sostenne il metodo dialettico nell'indagine filosofica. Egli concepiva la verità come esistente, sebbene inaccessibile in modo completo. L'unico modo, secondo Socrate, per avvicinarsi a essa in parte era attraverso la filosofia o, con un maestro, tramite maieutica.",
     "image": "socrate.png",
@@ -156,7 +157,7 @@
   {
     "name": "Aristotele",
     "category": "Filosofia",
-    "specialized": "Metafisica",
+    "specialized": "Metafisica e Filosofia Logica",
     "year": -384,
     "description": "Aristotele, noto per i suoi sillogismi, esplora la psiche umana nelle sue opere filosofiche e scientifiche. Inoltre, elabora un'ipotesi cosmologica che sostiene che tutto ciò che esiste è mosso da un motore immobile che comprende l'intero universo: Dio.",
     "image": "aristotele.png",
@@ -168,6 +169,7 @@
   {
     "name": "Agostino d'Ippona",
     "category": "Filosofia",
+    "specialized": "Teologia e Metafisica",
     "description": "Filosofo e teologo, autore di 'Confessioni' e 'De Trinitate'.",
     "year": -354,
     "image": "agostino.png",
@@ -176,6 +178,7 @@
   {
     "name": "Aulo Cornelio Celso",
     "category": "Medicina",
+    "specialized": "Medicina Generale",
     "description": "Autore di 'De Medicina', enciclopedia medica dell'antichità.",
     "year": 25,
     "image": "celso.png",
@@ -183,8 +186,8 @@
   },
   {
     "name": "Claudio Tolomeo",
-    "category": "Scienza",
-    "specialized": "Astronomia",
+    "category": "Astronomia",
+    "specialized": "Metafisica e Astronomia",
     "year": 100,
     "description": "Claudio Tolomeo, astronomo e geografo greco-egiziano, è noto per il suo sistema geocentrico, che dominò la concezione astronomica per secoli. La sua opera 'Almagesto' è un trattato astronomico fondamentale nell'Europa medievale e rinascimentale.",
     "image": "tolomeo.png",
@@ -193,9 +196,8 @@
   {
     "name": "Galeno",
     "category": "Medicina",
-    "specialized": "Neuroscienze",
+    "specialized": "Medicina e Chirurgia",
     "year": 129,
-    "decade": 120,
     "description": "Galen, medico greco-romano, contribuisce alla comprensione del sistema nervoso e delle funzioni cognitive.",
     "image": "galeno.png",
     "works": [
@@ -206,6 +208,7 @@
   {
     "name": "Plotino",
     "category": "Filosofia",
+    "specialized": "Metafisica",
     "description": "Filosofo neoplatonico, autore di 'Enneadi'.",
     "year": 204,
     "image": "plotino.png",
@@ -216,7 +219,6 @@
     "category": "Filosofia",
     "specialized": "Epicureismo",
     "year": 341,
-    "decade": 300,
     "description": "Epicuro fondò l'Epicureismo, una scuola filosofica che promuoveva la ricerca della felicità attraverso la minimizzazione del dolore e il raggiungimento dell'atarassia (tranquillità dell'anima). Sostenne che il piacere è il fine principale della vita.",
     "image": "epicuro.png",
     "works": [
@@ -227,7 +229,7 @@
   {
     "name": "Sant'Agostino",
     "category": "Filosofia",
-    "specialized": "Teologia",
+    "specialized": "Teologia e Metafisica",
     "year": 354,
     "description": "Sant'Agostino, figura prominente nella filosofia e nella teologia cristiana, integrò il pensiero platonico e aristotelico con la dottrina cristiana. Esplorò temi come il libero arbitrio e la grazia divina nelle sue opere.",
     "image": "sant_agostino.png",
@@ -239,7 +241,7 @@
   {
     "name": "Boezio",
     "category": "Filosofia",
-    "specialized": "Filosofia cristiana",
+    "specialized": "Teologia e Metafisica",
     "year": 480,
     "description": "Boezio, filosofo romano, contribuì alla filosofia cristiana medioevale. La sua opera più nota, 'La consolazione della filosofia', riflette sul destino umano, la virtù e la provvidenza divina.",
     "image": "boezio.png",
@@ -248,16 +250,9 @@
     ]
   },
   {
-    "name": "Isidoro di Siviglia",
-    "category": "Varie",
-    "description": "Autore di 'Etymologiae', enciclopedia che copre vari campi del sapere.",
-    "year": 560,
-    "image": "isidoro.png",
-    "works": ["Nessuna opera disponibile"]
-  },
-  {
     "name": "Avicenna",
-    "category": "Filosofia, Medicina",
+    "category": "Medicina",
+    "specialized": "Filosofia e Medicina Generale",
     "description": "Filosofo, medico e scienziato persiano, autore di 'Il Libro della Guarigione'.",
     "year": 980,
     "image": "avicenna.png",
@@ -266,6 +261,7 @@
   {
     "name": "Costantino l'Africano",
     "category": "Medicina",
+    "specialized": "Medicina Generale",
     "description": "Medico e traduttore, introdusse opere mediche arabe in Europa.",
     "year": 1020,
     "image": "costantino.png",
@@ -286,7 +282,7 @@
   {
     "name": "Guglielmo d'Ockham",
     "category": "Filosofia",
-    "specialized": "Nominalismo",
+    "specialized": "Nominalismo e Teologia",
     "year": 1287,
     "decade": 1300,
     "description": "Guglielmo d'Ockham, filosofo e teologo inglese, è noto per il nominalismo, una corrente filosofica che sostiene che gli universali sono solo nomi, non realtà. La sua 'Navis Logica' è un'opera importante nel contesto del nominalismo.",
@@ -299,7 +295,7 @@
   {
     "name": "Niccolò Copernico",
     "category": "Scienza",
-    "specialized": "Astronomia",
+    "specialized": "Scienziato e Filosofia della Scienza",
     "year": 1473,
     "description": "Niccolò Copernico, astronomo polacco, ha rivoluzionato la visione del sistema solare proponendo un modello eliocentrico. La sua opera principale, 'De revolutionibus orbium coelestium', è un pilastro della rivoluzione scientifica.",
     "image": "copernico.png",
@@ -308,7 +304,7 @@
   {
     "name": "Giordano Bruno",
     "category": "Filosofia",
-    "specialized": "Cosmologia",
+    "specialized": "Cosmologia e Filosofia della Scienza",
     "year": 1548,
     "description": "Giordano Bruno, filosofo e monaco italiano, ha avanzato idee rivoluzionarie sulla cosmologia. Propose un universo infinito con molti mondi abitati e sostenne che Dio era presente in tutto. Le sue opinioni eretiche portarono alla sua condanna e esecuzione.",
     "image": "bruno.png",
@@ -317,7 +313,7 @@
   {
     "name": "Tommaso Campanella",
     "category": "Filosofia",
-    "specialized": "Metafisica",
+    "specialized": "Metafisica, Teologia, Filosofia Sociale",
     "year": 1568,
     "description": "Tommaso Campanella, filosofo e teologo italiano, è noto per la sua visione utopistica espressa nell'opera 'La città del Sole'. Ha anche contribuito alle discussioni sulla metafisica e alla relazione tra filosofia e scienza. Campanella concepiva Dio come un punto geometrico, un concetto che riflette la sua prospettiva unica sulla divinità.",
     "image": "campanella.png",
@@ -326,7 +322,7 @@
   {
     "name": "Galileo Galilei",
     "category": "Scienza",
-    "specialized": "Astronomia",
+    "specialized": "Astronomia, Fisica, Filosofia della Scienza",
     "year": 1564,
     "description": "Galileo Galilei, astronomo e fisico italiano, è una figura chiave nella rivoluzione scientifica. Le sue osservazioni astronomiche con il telescopio hanno fornito evidenze a favore del sistema eliocentrico di Copernico, sfidando le concezioni tradizionali. E', inoltre, padre del metodo scientifico",
     "image": "galileo.png",
@@ -340,7 +336,7 @@
   {
     "name": "Johannes Kepler",
     "category": "Filosofia",
-    "specialized": "Filosofia della Scienza",
+    "specialized": "Astronomia e Filosofia della Scienza",
     "year": 1571,
     "decade": 1570,
     "description": "Johannes Kepler, astronomo e filosofo, applica il metodo scientifico alla comprensione del sistema nervoso e delle percezioni sensoriali.",
@@ -353,7 +349,7 @@
   {
     "name": "Thomas Hobbes",
     "category": "Filosofia",
-    "specialized": "Filosofia Politica",
+    "specialized": "Filosofia Sociale",
     "year": 1588,
     "description": "Thomas Hobbes, filosofo inglese, è noto per la sua opera 'Leviatano', in cui sviluppa una teoria politica basata sul contratto sociale. Hobbes sosteneva un'autorità sovrana forte per prevenire il caos sociale.",
     "image": "hobbes.png",
@@ -362,7 +358,7 @@
   {
     "name": "René Descartes",
     "category": "Filosofia",
-    "specialized": "Metafisica",
+    "specialized": "Metafisica e Filosofia della Scienza",
     "year": 1596,
     "decade": 1590,
     "description": "René Descartes, filosofo e scienziato, contribuisce alla comprensione della mente e del corpo attraverso il dualismo.",
@@ -375,7 +371,7 @@
   {
     "name": "Voltaire",
     "category": "Filosofia",
-    "specialized": "Illuminismo",
+    "specialized": "Filosofia Sociale",
     "year": 1694,
     "description": "Voltaire, pseudonimo di François-Marie Arouet, è stato un filosofo e scrittore illuminista francese. È noto per la sua difesa delle libertà civili, della tolleranza e del pensiero critico.",
     "image": "voltaire.png",
@@ -384,7 +380,7 @@
   {
     "name": "Montesquieu",
     "category": "Filosofia",
-    "specialized": "Illuminismo",
+    "specialized": "Filosofia Sociale",
     "year": 1689,
     "description": "Charles-Louis de Secondat, noto come Montesquieu, è stato uno scrittore e filosofo francese dell'illuminismo. È famoso per la sua teoria della separazione dei poteri e l'influenza sulla costituzione americana.",
     "image": "montesquieu.png",
@@ -393,7 +389,7 @@
   {
     "name": "John Locke",
     "category": "Filosofia",
-    "specialized": "Empirismo",
+    "specialized": "Empirismo e Filosofia Generale",
     "year": 1632,
     "decade": 1630,
     "description": "John Locke, filosofo empirista, influisce sulla psicologia empirica con il suo concetto di tabula rasa.",
@@ -406,7 +402,7 @@
   {
     "name": "David Hume",
     "category": "Filosofia",
-    "specialized": "Empirismo",
+    "specialized": "Empirismo e Filosofia Generale",
     "year": 1711,
     "description": "David Hume, filosofo scozzese, è una figura chiave nell'empirismo. Le sue opere influenzarono profondamente la filosofia, concentrandosi sulla teoria della conoscenza e sulla critica della causalità. È noto anche per le sue riflessioni sulla religione.",
     "image": "hume.png",
@@ -427,7 +423,7 @@
   {
     "name": "Auguste Comte",
     "category": "Sociologia",
-    "specialized": "Positivismo",
+    "specialized": "Positivismo e Filosofia Sociale",
     "year": 1798,
     "description": "Auguste Comte è considerato il padre della sociologia. Ha introdotto il positivismo sociale, sostenendo che la società può essere studiata e compresa attraverso metodi scientifici.",
     "image": "comte.png",
@@ -436,7 +432,7 @@
   {
     "name": "Karl Marx",
     "category": "Sociologia",
-    "specialized": "Teoria del Conflitto",
+    "specialized": "Filosofia Sociale",
     "year": 1818,
     "description": "Karl Marx è noto per la sua analisi critica del capitalismo. La sua teoria si concentra sul conflitto di classe e sull'influenza economica sulla struttura sociale.",
     "image": "marx.png",
@@ -445,7 +441,7 @@
   {
     "name": "Hermann von Helmholtz",
     "category": "Fisiologia",
-    "specialized": "Neuroscienze",
+    "specialized": "Neuroscienze e Fisica",
     "year": 1821,
     "description": "Hermann von Helmholtz, fisiologo e fisico, contribuisce alle neuroscienze attraverso i suoi studi sulla percezione sensoriale e la fisiologia nervosa.",
     "image": "helmholtz.png",
@@ -457,7 +453,7 @@
   {
     "name": "Paul Broca",
     "category": "Medicina",
-    "specialized": "Neuroscienze",
+    "specialized": "Neuroscienze e Antropologia",
     "year": 1824,
     "description": "Paul Broca, medico e antropologo, scopre l'area di Broca nel cervello, collegando la neuroscienza all'linguaggio.",
     "image": "broca.png",
@@ -478,7 +474,7 @@
   {
     "name": "William James",
     "category": "Psicologia",
-    "specialized": "Funzionalismo",
+    "specialized": "Psicologia Funzionalista",
     "year": 1842,
     "description": "William James, padre della psicologia americana, promuove l'approccio funzionalista concentrandosi su come la mente funziona nella vita di tutti i giorni.",
     "image": "james.png",
@@ -513,8 +509,8 @@
   },
   {
     "name": "Sigmund Freud",
-    "category": "Psicoanalisi",
-    "specialized": "Psicologia Clinica",
+    "category": "Psicologia",
+    "specialized": "Medicina, Psicoanalisi, Psicologia Clinica",
     "year": 1856,
     "description": "Sigmund Freud, fondatore della psicoanalisi, rivoluziona la comprensione dell'inconscio e delle dinamiche psichiche profonde.",
     "image": "freud.png",
@@ -544,7 +540,7 @@
   {
     "name": "John Dewey",
     "category": "Psicologia",
-    "specialized": "Psicologia Funzionalista",
+    "specialized": "Psicologia (Funzionalismo)",
     "year": 1859,
     "description": "John Dewey è stato uno psicologo funzionalista e filosofo dell'educazione. Ha sottolineato l'importanza dell'esperienza e dell'apprendimento attivo nel processo educativo.",
     "image": "dewey.png",
@@ -553,7 +549,7 @@
   {
     "name": "Charlotte Perkins Gilman",
     "category": "Sociologia",
-    "specialized": "Femminismo",
+    "specialized": "Sociologia e Filosofia Sociale",
     "year": 1860,
     "description": "Charlotte Perkins Gilman è stata una sociologa e femminista. Ha affrontato questioni di genere e ha scritto sull'indipendenza economica delle donne e sull'uguaglianza.",
     "image": "gilman.png",
@@ -562,7 +558,7 @@
   {
     "name": "Max Weber",
     "category": "Sociologia",
-    "specialized": "Teoria dell'Azione Sociale",
+    "specialized": "Sociologia e Filosofia Sociale",
     "year": 1864,
     "description": "Max Weber ha introdotto concetti chiave come azione sociale, razionalizzazione e l'idea di 'protestantesimo etico'. Ha contribuito significativamente alla comprensione della società moderna.",
     "image": "weber.png",
@@ -571,7 +567,7 @@
   {
     "name": "Edward B. Titchener",
     "category": "Psicologia",
-    "specialized": "Psicologia Strutturalista",
+    "specialized": "Psicologia (Strutturalismo)",
     "year": 1867,
     "description": "Edward B. Titchener è stato uno degli studenti di Wundt e ha portato il suo approccio strutturalista negli Stati Uniti. Ha cercato di scomporre la mente in elementi più semplici.",
     "image": "titchener.png",
@@ -580,7 +576,7 @@
   {
     "name": "W.E.B. Du Bois",
     "category": "Sociologia",
-    "specialized": "Sociologia Africana-Americana",
+    "specialized": "Sociologia e Filosofia Sociale",
     "year": 1868,
     "description": "W.E.B. Du Bois è stato un sociologo afroamericano che ha affrontato il razzismo e ha studiato la segregazione. Ha fondato l'Associazione Nazionale per il Progresso delle Persone di Colore.",
     "image": "dubois.png",
@@ -598,7 +594,7 @@
   {
     "name": "Edward Thorndike",
     "category": "Psicologia",
-    "specialized": "Comportamentismo",
+    "specialized": "Psicologia (Comportamentismo)",
     "year": 1874,
     "description": "Edward Thorndike ha contribuito alla teoria dell'apprendimento con la sua legge dell'effetto, che afferma che le risposte seguite da soddisfazione sono più propense a ripetersi. Questa idea è stata fondamentale nello sviluppo delle teorie comportamentali sull'apprendimento e ha contribuito a plasmare il comportamentismo nel campo della psicologia. La sua contribuzione principale al comportamentismo è stata la formulazione della 'Legge dell'effetto', che ha evidenziato il ruolo delle conseguenze nel modellare il comportamento. Opere principali: Legge dell'effetto nell'apprendimento",
     "image": "thorndike.png",
@@ -607,7 +603,7 @@
   {
     "name": "John B. Watson",
     "category": "Psicologia",
-    "specialized": "Comportamentismo",
+    "specialized": "Psicologia (Comportamentismo)",
     "year": 1878,
     "description": "John B. Watson è considerato il fondatore del comportamentismo. Ha introdotto il concetto che gli psicologi dovrebbero studiare il comportamento osservabile piuttosto che gli stati mentali interni. La sua visione ha avuto un impatto significativo sulla prospettiva della psicologia, enfatizzando l'importanza dell'osservazione del comportamento come metodo principale di studio. La sua contribuzione principale al comportamentismo è stata la spinta a concentrarsi sul comportamento esterno, eliminando l'attenzione dagli stati mentali interni. Opere principali: Psicologia dal punto di vista comportamentale",
     "image": "watson.png",
@@ -616,7 +612,7 @@
   {
     "name": "Wolfgang Köhler",
     "category": "Psicologia",
-    "specialized": "Gestalt Psychology",
+    "specialized": "Psicologia (Gestalt)",
     "year": 1887,
     "description": "Wolfgang Köhler è stato uno psicologo tedesco noto per il suo lavoro nella psicologia della Gestalt. Contribuì alla comprensione della percezione e del pensiero creativo, enfatizzando l'importanza delle strutture cognitive nella risoluzione dei problemi.",
     "image": "kohler.png",
@@ -634,7 +630,7 @@
   {
     "name": "Jean Piaget",
     "category": "Psicologia",
-    "specialized": "Cognitivismo",
+    "specialized": "Psicologia dello Sviluppo (Cognitivismo)",
     "year": 1896,
     "description": "Jean Piaget, psicologo svizzero, sviluppa la teoria dello sviluppo cognitivo nell'infanzia.",
     "image": "piaget.png",
@@ -646,7 +642,7 @@
   {
     "name": "Lev Vygotsky",
     "category": "Psicologia",
-    "specialized": "Sociocultural Theory",
+    "specialized": "Psicologia dello Sviluppo",
     "year": 1896,
     "description": "Lev Vygotsky, psicologo russo, è noto per la sua teoria socioculturale che sottolinea l'importanza delle interazioni sociali e della cultura nello sviluppo cognitivo. Ha influenzato l'educazione e la psicologia dello sviluppo.",
     "image": "vygotsky.png",
@@ -655,7 +651,7 @@
   {
     "name": "Carl Rogers",
     "category": "Psicologia",
-    "specialized": "Umanistica",
+    "specialized": "Psicologia, Psicologia Clinica",
     "year": 1902,
     "description": "Carl Rogers, psicologo umanista, promuove l'approccio centrato sulla persona e l'empatia nella psicoterapia.",
     "image": "rogers.png",
@@ -667,7 +663,7 @@
   {
     "name": "B.F. Skinner",
     "category": "Psicologia",
-    "specialized": "Comportamentismo",
+    "specialized": "Psicologia (Comportamentismo)",
     "year": 1904,
     "description": "B.F. Skinner, psicologo comportamentista, estende la teoria del comportamentismo e introduce il concetto di rinforzo.",
     "image": "skinner.png",
@@ -702,8 +698,8 @@
   },
   {
     "name": "Rita Levi-Montalcini",
-    "category": "Neuroscienze",
-    "specialized": "Neurologia",
+    "category": "Medicina",
+    "specialized": "Neurologia e Neuroscienze",
     "year": 1909,
     "description": "Rita Levi-Montalcini, neurologa italiana, scopre il fattore di crescita nervosa, contribuendo alla comprensione dello sviluppo del sistema nervoso.",
     "image": "montalcini.png",
@@ -715,7 +711,7 @@
   {
     "name": "Roger W. Sperry",
     "category": "Neuroscienze",
-    "specialized": "Neuroscienze",
+    "specialized": "Neuroscienze e Medicina Generale",
     "year": 1913,
     "description": "Roger W. Sperry, neuroscienziato, riceve il Nobel per la sua ricerca sull'emisfero cerebrale destro e sinistro.",
     "image": "sperry.png",
@@ -727,7 +723,7 @@
   {
     "name": "Mary Ainsworth",
     "category": "Psicologia",
-    "specialized": "Teoria dell'Attaccamento",
+    "specialized": "Psicologia dello Sviluppo",
     "year": 1913,
     "description": "Mary Ainsworth, psicologa dello sviluppo, contribuisce alla teoria dell'attaccamento nell'infanzia.",
     "image": "ainsworth.png",
@@ -739,7 +735,7 @@
   {
     "name": "Aaron Beck",
     "category": "Psicologia",
-    "specialized": "Terapia Cognitivo-Comportamentale",
+    "specialized": "Psichiatria e Psicologia (Cognitivismo)",
     "year": 1921,
     "description": "Aaron Beck è uno psichiatra e psicologo cognitivo noto per lo sviluppo della Terapia Cognitivo-Comportamentale (CBT). Ha introdotto il concetto di 'distorsioni cognitive' e ha influenzato significativamente il campo della psicoterapia.",
     "image": "beck.png",
@@ -748,7 +744,7 @@
   {
     "name": "Erving Goffman",
     "category": "Sociologia",
-    "specialized": "Teoria dell'Interazionismo Simbolico",
+    "specialized": "Sociologia Psicologia Sociale",
     "year": 1922,
     "description": "Erving Goffman è noto per la sua analisi delle interazioni quotidiane e per la teoria dell'interazionismo simbolico. Ha esplorato il modo in cui le persone costruiscono significati attraverso i simboli.",
     "image": "goffman.png",
@@ -757,7 +753,7 @@
   {
     "name": "Don Lorenzo Milani",
     "category": "Pedagogia",
-    "specialized": "Pedagogia della Legalità",
+    "specialized": "Pedagogia Sociale",
     "year": 1923,
     "description": "Don Lorenzo Milani è stato un sacerdote e pedagogista italiano noto per il suo impegno nella pedagogia della legalità. Ha fondato la scuola di Barbiana, un esempio di educazione inclusiva e socialmente impegnata.",
     "image": "milani.png",
@@ -766,7 +762,7 @@
   {
     "name": "Albert Bandura",
     "category": "Psicologia",
-    "specialized": "Teoria dell'Apprendimento Sociale",
+    "specialized": "Psicologia dello Sviluppo e Sociale",
     "year": 1925,
     "description": "Albert Bandura, psicologo, sviluppa la teoria dell'apprendimento sociale, evidenziando il ruolo dell'osservazione e dell'imitazione nel comportamento umano.",
     "image": "bandura.png",
@@ -778,7 +774,7 @@
   {
     "name": "Ulric Neisser",
     "category": "Psicologia",
-    "specialized": "Psicologia Cognitiva",
+    "specialized": "Psicologia (Cognitivismo)",
     "year": 1928,
     "description": "Ulric Neisser è considerato uno dei padri fondatori della psicologia cognitiva. Ha introdotto il termine 'cognizione' e ha promosso l'approccio ecologico, enfatizzando l'importanza del contesto nell'analisi del comportamento umano.",
     "image": "neisser.png",
@@ -787,7 +783,7 @@
   {
     "name": "Noam Chomsky",
     "category": "Psicologia",
-    "specialized": "Linguistica Cognitiva",
+    "specialized": "Psicologia Cognitiva e Linguistica",
     "year": 1928,
     "description": "Noam Chomsky, linguista e cognitivista, rivoluziona lo studio del linguaggio e della mente con la sua teoria generativa della grammatica.",
     "image": "chomsky.png",
@@ -823,7 +819,7 @@
   {
     "name": "Ursula Bellugi",
     "category": "Neuroscienze",
-    "specialized": "Neuropsicologia",
+    "specialized": "Neuropsicologia e Psicopatologia",
     "year": 1931,
     "description": "Ursula Bellugi, neuropsicologa, contribuisce allo studio delle anomalie linguistiche nei pazienti con sindrome di Williams.",
     "image": "bellugi.png",
@@ -908,7 +904,7 @@
     {
       "name": "Richard Davidson",
       "category": "Neuroscienze",
-      "specialized": "Neuroscienze Affective",
+      "specialized": "Neuroscienze",
       "year": 1951,
       "description": "Richard Davidson, neuroscienziato, è noto per la sua ricerca sulle basi neurali dell'emozione e della regolazione emotiva.",
       "image": "davidson.png",
