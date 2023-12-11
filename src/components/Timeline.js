@@ -9,6 +9,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
   const START_YEAR = -3000;
   const YEAR_INTERVAL = 1;
   const SPECIAL_TICK_INTERVAL = 100;
+  const WINDOW_WIDTH = window.innerWidth;
 
   // Ref for the timeline
   const timelineRef = useRef(null);
@@ -45,12 +46,12 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
     const totalTicks = Math.ceil(yearsDifference / YEAR_INTERVAL);
     setTotalTicks(totalTicks);
   }, [START_YEAR_STATE, YEAR_INTERVAL]);
-
+  
   // Handle the selected year
   useEffect(() => {
     if (selectedYear !== null) {
       const yearIndex = Math.floor((selectedYear - START_YEAR_STATE) / YEAR_INTERVAL);
-      setScrollX(-yearIndex * TICK_DISTANCE + 500);
+      setScrollX(-yearIndex * TICK_DISTANCE + (WINDOW_WIDTH / 2));
     }
   }, [selectedYear, START_YEAR_STATE, YEAR_INTERVAL]);
 
@@ -60,7 +61,7 @@ useEffect(() => {
     const author = authorsData.find((author) => author.name === selectedAuthor);
     if (author && author.year !== undefined) {
       const authorYearIndex = Math.floor((author.year - START_YEAR_STATE) / YEAR_INTERVAL);
-      setScrollX(-authorYearIndex * TICK_DISTANCE + 500);
+      setScrollX(-authorYearIndex * TICK_DISTANCE + (WINDOW_WIDTH / 2));
       // Call  function directly with the author's year index
       handleTickClick(author.year);
     }
@@ -71,7 +72,7 @@ useEffect(() => {
   // Calculate the current year and set today's tick
   useEffect(() => {
     const today = new Date().getFullYear();
-    setTodayTick(Math.floor((today - START_YEAR_STATE) / YEAR_INTERVAL));
+    setTodayTick(Math.floor(today - START_YEAR_STATE));
   }, [START_YEAR_STATE, YEAR_INTERVAL]);
 
   // Handle mouse events for dragging the timeline
@@ -141,7 +142,7 @@ useEffect(() => {
     <div className="flex-raw items-center overflow-x-visible select-none" style={{marginTop:'30vh'}}>
       {/* Timeline */}
       <div
-        className="timeline timeline-line bg-white shadow-md h-5 rounded-md z-40"
+        className="timeline timeline-line bg-white shadow-md h-5 rounded-md z-30"
         onMouseEnter={handleMouseEnter}
         onMouseDown={(e) => {
           handleMouseEnter();
@@ -152,7 +153,7 @@ useEffect(() => {
         onTouchEnd={handleTouchEnd}
         onWheel={handleMouseWheel}
         ref={timelineRef}
-        style={{ width: `${TOTAL_TICKS * TICK_DISTANCE}px`, transform: `translateX(${SCROLL_X}px)`,   animation: 'slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards' }}
+        style={{ width: `${TOTAL_TICKS * TICK_DISTANCE}px`, transform: `translateX(${SCROLL_X}px)` }}
 
       >
         {/* Today's timeline start */}
