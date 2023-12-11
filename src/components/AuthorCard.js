@@ -18,6 +18,7 @@ const AuthorCard = ({ name, category, specialized, description, year, works, ima
   const isClicked = openAuthor === name;
   const imagePath = `${process.env.PUBLIC_URL}/media/img/${image}`;
   const backgroundColor = categoryColors[category];
+  const isMobile = window.innerWidth < 637;
 
   const handleClick = () => {
     if (isClicked) {
@@ -34,41 +35,40 @@ const AuthorCard = ({ name, category, specialized, description, year, works, ima
 
   return (
     <div
-      className={`internal-div ${isClicked ? 'clicked absolute -top-3 sm:top-0' : 'relative mx-4'} ${category}`}
+      className={`internal-div ${isClicked ? 'clicked absolute -top-3 sm:top-0 z-50' : 'relative mx-4'} ${category}`}
       style={isClicked ? { transform: 'translate(-50%, 5vh)' } : { transform: 'translate(-65%,-18vh)' }}
     >
       {isClicked ? (
         /* Versione grande con tutti i dettagli */
-        <div className='grid grid-flow-col cols-auto gap-3 sm:gap-6'>
-          <div className='grid grid-flow-row gap-1 bg-zinc-300 shadow-zinc-500 shadow-lg rounded-md p-2'>
-            <div className='div-content-background relative grid grid-flow-col gap-1 rounded-t-md' style={{ minWidth: '25vw', minHeight: '18vh', width: '35vw', height: '35vh' }} onClick={handleClick}>
+        <div className='sm:grid sm:grid-flow-col sm:cols-auto sm:gap-6'>
+          <div className=' flex items-center justify-around p-2 sm:grid sm:grid-flow-row bg-zinc-300 shadow-zinc-500 shadow-lg rounded-md ' style={ isMobile ? {width: "90vw", height: "28vh", position:"relative", top:"-35vh"} : {width: "30vw", height: "100%"}}>
+            <div className='div-content-background grid grid-flow-col gap-1 rounded-t-md relative h-full' style={ isMobile ? {width: "100%"} : {width: "100%"}} onClick={handleClick}>
               {/* First Column */}
-              <div className='hidden first-column grid-cols-1 sm:grid grid-flow-row text-center relative overflow-y-hidden mr-2' >
-                <div className="author-info grid-row-1 flex items-center justify-center text-white rounded-t-md w-full" style={{ backgroundColor }}>
-                  <h3 className=" text-sm font-bold whitespace-no-wrap mx-1">{name}</h3>
+              <div className=' first-column grid-cols-1 grid grid-flow-row text-center relative overflow-y-hidden mr-2' >
+                <div className="author-name sm:grid-row-1 h-full text-white rounded-t-md p-2 sm:p-0" style={{display:"block", backgroundColor}}>
+                  <h3 className=" text-sm font-bold whitespace-no-wrap mx-1" >{name}</h3>
                 </div>
-                <div className="author-image grid-row-2 w-full rounded-b-md">
-                  <img className="image rounded-b-md w-full h-full object-contain" src={imagePath} alt={name} />
+                <div className="author-image sm:grid-row-2 rounded-b-md">
+                  <img className="image rounded-b-md w-full object-contain" src={imagePath} alt={name} />
                 </div>
               </div>
               {/* Second Column */}
-              <div className="author-works p-2 second-column text-white w-full rounded-t-md rounded-b-md grid-cols-2 object-contain" style={{ backgroundColor }}>
-                <h3 className="block sm:hidden text-sm font-bold whitespace-no-wrap" style={{ fontSize: '0.8em' }}>{name}</h3>
-                <h4 style={{ fontSize: '0.8em' }}>Opere:</h4>
-                <ul style={{ fontSize: '0.7em', listStyleType: 'disc' }}>
+              <div className="author-works p-1 second-column text-white w-full rounded-t-md rounded-b-md sm:grid-cols-2 object-contain h-full" style={{ backgroundColor }}>
+                <h4 style={ isMobile ? { fontSize: '0.6em' } : {fontSize: '0.9em'}}>Opere:</h4>
+                <ul style={ isMobile ? { fontSize: '0.6em', listStyleType:'disc' } : {fontSize: '0.6em', listStyleType:'disc'}}>
                   {works.map((work, index) => (
                     <li className='ml-4' key={index}>{work}</li>
                   ))}
                 </ul>
                 <hr className='my-1'></hr>
-                <div><p style={{ fontSize: '0.7em' }} className='h-full overflow-y-hidden'>{description}</p></div>
+                <div className='overflow-y-hidden'><p style={ isMobile ? { fontSize: '0.6em' } : {fontSize: '0.7em'}} className='h-full'>{description}</p></div>
               </div>
             </div>
             {/* Category Section */}
-            <div className='hidden sm:block -bottom-4 mt-1 font-sm grid-flow-row w-full h-6 rounded-b-md text-white text-center' style={{ backgroundColor }}>{specialized}</div>
+            <div className='hidden sm:block font-sm grid-flow-row w-full rounded-b-md text-white text-center py-1' style={ isMobile ? { display:"none" } : {fontSize: '0.8em', display:"block", backgroundColor, marginTop:"1vh"}}>{specialized}</div>
           </div>
           {/* YT API */}
-          <div className='grid-cols-2 my-auto rounded-t-md rounded-b-md' style={{ minWidth: '30vw', height: '35vh', backgroundColor }}><YouTubeSearchBox authorName={name} /></div>
+          <div className='grid-cols-2 my-auto rounded-t-md rounded-b-md' style={ isMobile ? {width: "90vw", height: "27vh", backgroundColor, top:"2vh", position:"absolute"} : {width: "40vw", height: "35vh", backgroundColor}}><YouTubeSearchBox authorName={name} /></div>
         </div>
       ) : (
         /* Versione piccola solo con l'immagine */
