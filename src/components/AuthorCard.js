@@ -5,8 +5,6 @@ const categoryColors = {
   Neuroscienze: 'rgba(255, 0, 0, 0.5)', // Red
   Psicologia: 'rgba(0, 255, 0, 0.5)', // Green
   Medicina: 'rgba(100, 255, 100, 0.5)', // Green
-  cognitivista: 'rgba(0, 0, 255, 0.5)', // Blue
-  Psicoanalisi: 'rgba(255, 255, 0, 0.5)', // Yellow
   Filosofia: 'rgba(255, 0, 255, 0.5)', // Magenta
   Metafisica: 'rgba(0, 155, 255, 0.8)', // Cyan
   Sociologia: 'rgba(128, 0, 128, 0.5)', // Purple
