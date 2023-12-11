@@ -9,7 +9,7 @@ const categoryColors = {
   Metafisica: 'rgba(92, 184, 255, 0.8)',  // Blu chiaro: ispirante, tranquillo
   Sociologia: 'rgba(184, 92, 184, 0.8)',  // Viola scuro: misterioso, sofisticato
   Pedagogia: 'rgba(255, 188, 92, 0.8)',   // Arancione: accogliente, amichevole
-  Fisiologia: 'rgba(92, 184, 92, 0.8)'    // Verde scuro: rigenerante, fresco  
+  Fisiologia: 'rgba(255, 197, 61, 0.8)'    // Giallo: rigenerante, fresco  
 };
 
 const AuthorCard = ({ name, category, specialized, description, year, works, image, toggleHover, index, openAuthor, setOpenAuthor }) => {
