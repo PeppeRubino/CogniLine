@@ -53,7 +53,7 @@ const Timeline = ({ selectedYear, selectedAuthor }) => {
       const yearIndex = Math.floor((selectedYear - START_YEAR_STATE) / YEAR_INTERVAL);
       setScrollX(-yearIndex * TICK_DISTANCE + (WINDOW_WIDTH / 2));
     }
-  }, [selectedYear, START_YEAR_STATE, YEAR_INTERVAL]);
+  }, [selectedYear, START_YEAR_STATE, YEAR_INTERVAL, WINDOW_WIDTH]);
 
 // Handle the selected author
 useEffect(() => {
@@ -66,7 +66,7 @@ useEffect(() => {
       handleTickClick(author.year);
     }
   }
-}, [selectedAuthor, START_YEAR_STATE, handleTickClick]);
+}, [selectedAuthor, START_YEAR_STATE, handleTickClick, WINDOW_WIDTH]);
 
 
   // Calculate the current year and set today's tick
