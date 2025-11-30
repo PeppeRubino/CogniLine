@@ -217,7 +217,7 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
           >
             {centerAuthors.length > 0 ? (
               centerAuthors.map((author, i) => (
-                <div key={i} className="pointer-events-auto">
+                <div key={i} className="pointer-events-auto select-none">
                   <AuthorCard
                     name={author.name}
                     category={author.category}
