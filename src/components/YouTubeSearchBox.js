@@ -7,13 +7,12 @@ const YouTubeSearchBox = ({ authorName }) => {
   useEffect(() => {
     const fetchVideoId = async () => {
       try {
-        const res = await fetch(`/api/youtube?query=${encodeURIComponent(authorName)}`);
+        const res = await fetch(`/.netlify/functions/youtube?query=${encodeURIComponent(authorName)}`);
         if (!res.ok) throw new Error('Video non trovato o errore server');
         const data = await res.json();
         setVideoId(data.videoId);
       } catch (err) {
         console.error(err);
-        // Mostra messaggio di errore dopo 5 secondi
         setTimeout(() => setShowErrorMessage(true), 5000);
       }
     };
@@ -22,13 +21,15 @@ const YouTubeSearchBox = ({ authorName }) => {
   }, [authorName]);
 
   return (
-    <div className="">
+    <div className="flex items-center justify-center h-full w-full relative select-none">
+      {/* Messaggio di errore */}
       {showErrorMessage && (
-        <div className=''>
+        <div className="absolute text-center mx-2 text-white font-light">
           <span>Errore durante il caricamento del video. <hr />Riprova più tardi.</span>
         </div>
       )}
 
+      {/* Contenitore video */}
       <div className="w-full h-full">
         {videoId ? (
           <iframe
@@ -39,7 +40,7 @@ const YouTubeSearchBox = ({ authorName }) => {
             allowFullScreen
           />
         ) : !showErrorMessage && (
-          <div className='flex items-center justify-center text-white font-light'>
+          <div className="flex items-center justify-center text-white font-light">
             <p>Stiamo cercando: {authorName}</p>
           </div>
         )}
