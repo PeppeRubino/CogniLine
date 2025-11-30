@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import AuthorCard from "./AuthorCard.js";
-import authorsData from "../JSON/authorsData.json";
+import authorsData from "../data/authorsData.json";
 import "../App.css";
 
 const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
@@ -286,74 +286,60 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
             </div>
 
             {/* Render ticks */}
-            {Array.from({ length: TOTAL_TICKS + 100 }).map((_, index) => {  // UPDATED: limitato per efficienza
+            {Array.from({ length: TOTAL_TICKS + 100 }).map((_, index) => {
               const years = START_YEAR_STATE + index * YEAR_INTERVAL;
               const leftPx = index * TICK_DISTANCE;
-              const isVisible = isTickVisible(years);
+              const isEvent = isTickVisible(years);
+              const isSpecial = index % SPECIAL_TICK_INTERVAL === 0 && index <= TODAY_TICK;
 
-              // special hundredth tick label condition
-              const renderHundredLabel =
-                index % SPECIAL_TICK_INTERVAL === 0 && index <= TODAY_TICK;
+              if (!isEvent && !isSpecial) return null;
 
               return (
                 <React.Fragment key={index}>
-                  {/* visible ticks where there are authors */}
-                  {isVisible && (
+                  <div
+                    style={{
+                      left: `${leftPx}px`,
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                    }}
+                    className={`absolute flex flex-col items-center ${isEvent ? "cursor-pointer" : ""}`}
+                    onClick={isEvent ? () => handleTickClick(years) : null}
+                    onMouseEnter={isEvent ? () => setHoveredYear(years) : null}
+                    role={isEvent ? "button" : null}
+                    tabIndex={isEvent ? 0 : null}
+                    aria-label={isEvent ? `Tick ${years}` : null}
+                    onKeyDown={isEvent ? (e) => {
+                      if (e.key === "Enter" || e.key === " ") handleTickClick(years);
+                    } : null}
+                  >
+                    {/* tick line */}
                     <div
-                      style={{
-                        left: `${leftPx}px`,
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                      }}
-                      className="absolute flex flex-col items-center cursor-pointer"
-                      onClick={() => handleTickClick(years)}
-                      onMouseEnter={() => setHoveredYear(years)}
-                      role="button"
-                      tabIndex={0}
-                      aria-label={`Tick ${years}`}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ")
-                          handleTickClick(years);
-                      }}
-                    >
-                      {/* tick line */}
-                      <div
-                        className={`w-[2px] ${
-                          CLICKED_YEAR === years
-                            ? "h-10 bg-white"
-                            : "h-6 bg-zinc-500"
-                        } rounded`}
-                      />
+                      className={`${
+                        isSpecial ? "w-[3px]" : "w-[2px]"
+                      } ${
+                        isEvent && CLICKED_YEAR === years
+                          ? "h-10 bg-white"
+                          : isSpecial
+                          ? "h-8 bg-zinc-600"
+                          : "h-6 bg-zinc-500"
+                      } rounded`}
+                    />
 
-                      {/* small hover label */}
-                      {HOVERED_YEAR === years && (
-                        <div className="absolute -top-12 text-xs text-zinc-300 bg-zinc-800/60 px-2 py-1 rounded">
-                          {years}
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {/* large special ticks every SPECIAL_TICK_INTERVAL */}
-                  {renderHundredLabel && (
-                    <div
-                      key={`big-${index}`}
-                      style={{
-                        left: `${leftPx}px`,
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                      }}
-                      className="absolute flex flex-col items-center"
-                    >
-                      <div className="w-[3px] h-8 bg-zinc-600 rounded" />
-                      <div
-                        className="mt-2 text-zinc-400 text-xs select-none"
-                        style={{ marginTop: 10 }}
-                      >
+                    {/* small hover label */}
+                    {isEvent && HOVERED_YEAR === years && (
+                      <div className="absolute -top-12 text-xs text-zinc-300 bg-zinc-800/60 px-2 py-1 rounded">
                         {years}
                       </div>
+                    )}
+
+                    {/* year label */}
+                    <div
+                      className="mt-2 text-zinc-400 text-xs select-none"
+                      style={{ marginTop: 10 }}
+                    >
+                      {years}
                     </div>
-                  )}
+                  </div>
                 </React.Fragment>
               );
             })}
