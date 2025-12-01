@@ -1,4 +1,10 @@
-import React, { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+  useMemo,
+} from "react";
 import AuthorCard from "./AuthorCard.js";
 import authorsData from "../data/authorsData.json";
 import "../App.css";
@@ -9,12 +15,11 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
   const START_YEAR = -3000;
   const YEAR_INTERVAL = 1;
   const SPECIAL_TICK_INTERVAL = 100;
-  const WINDOW_WIDTH = typeof window !== "undefined" ? window.innerWidth : 1200;
 
   // Ref for the timeline
   const timelineRef = useRef(null);
 
-  // State variables (kept names/logic identical)
+  // State variables
   const [DRAG_START_X, setDragStartX] = useState(null);
   const [SCROLL_X, setScrollX] = useState(0);
   const START_YEAR_STATE = START_YEAR; // unchanged
@@ -24,35 +29,40 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
   const [HOVERED_YEAR, setHoveredYear] = useState(null);
   const [openAuthor, setOpenAuthor] = useState(null);
 
-  // NEW: Calcola autori filtrati una volta sola (performance)
+  // Mobile hint (mostra su mobile finché l'utente non interagisce)
+  const [showMobileHint, setShowMobileHint] = useState(true);
+
+  // Window width reattivo (utile per centrare lo scroll su resize/rotazione)
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
+
+  // Calcola autori filtrati una volta sola (performance)
   const filteredAuthors = useMemo(() => {
     let list = authorsData;
 
-    // Filtro autore selezionato (se usato)
     if (selectedAuthor && selectedAuthor.trim() !== "") {
       list = list.filter(
         (a) => a.name.toLowerCase() === selectedAuthor.toLowerCase()
       );
     }
 
-    // Filtro di ricerca libera
     if (searchQuery && searchQuery.trim() !== "") {
       const q = searchQuery.toLowerCase();
-      const isNumericQuery = !isNaN(q) && q !== ''; // NEW: rileva se query numerica per anni
+      const isNumericQuery = !isNaN(q) && q !== "";
 
       list = list.filter(
         (a) =>
           a.name.toLowerCase().includes(q) ||
-          (a.category && a.category.toLowerCase().includes(q)) || // NEW: aggiungi category come nel placeholder
-          (isNumericQuery && String(a.year).startsWith(q)) // UPDATED: usa startsWith per anni numerici (migliore per typing parziale)
-          // Rimosso: (a.description && a.description.toLowerCase().includes(q)) per evitare match multipli indesiderati
+          (a.category && a.category.toLowerCase().includes(q)) ||
+          (isNumericQuery && String(a.year).startsWith(q))
       );
     }
 
     return list;
   }, [selectedAuthor, searchQuery]);
 
-  // UPDATED: Usa filteredAuthors per autori per anno
+  // Usa filteredAuthors per autori per anno
   const filterAuthorsForYear = (years) => {
     return filteredAuthors.filter((author) => author.year === years);
   };
@@ -61,7 +71,7 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
     setClickedYear((prevYear) => (prevYear === years ? null : years));
   }, []);
 
-  // toggleHover: small helper that AuthorCard expects to be able to call
+  // toggleHover: helper che AuthorCard può chiamare
   const toggleHover = useCallback((index, isOpen, name) => {
     if (isOpen) {
       setOpenAuthor(name);
@@ -70,12 +80,12 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
     }
   }, []);
 
-  // UPDATED: Usa filterAuthorsForYear (che ora è filtrato)
+  // Usa filterAuthorsForYear (filtrato)
   const isTickVisible = (years) => {
     return filterAuthorsForYear(years).length > 0;
   };
 
-  // Calculate the total number of ticks
+  // Calcola numero totale di tick
   useEffect(() => {
     const currentYear = new Date().getFullYear();
     const yearsDifference = currentYear - START_YEAR_STATE;
@@ -83,51 +93,64 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
     setTotalTicks(totalTicks);
   }, [START_YEAR_STATE, YEAR_INTERVAL]);
 
-  // Calculate the current year and set today's tick + initial scroll
+  // Calcola il tick odierno e scroll iniziale (dipende da windowWidth)
   useEffect(() => {
     const today = new Date().getFullYear();
     const tick = Math.floor((today - START_YEAR_STATE) / YEAR_INTERVAL);
     setTodayTick(tick);
-    setScrollX(-tick * TICK_DISTANCE + WINDOW_WIDTH / 2); // UPDATED: scroll iniziale qui per usare tick corretto
-  }, [START_YEAR_STATE, YEAR_INTERVAL, TICK_DISTANCE, WINDOW_WIDTH]);
+    setScrollX(-tick * TICK_DISTANCE + windowWidth / 2);
+  }, [START_YEAR_STATE, YEAR_INTERVAL, TICK_DISTANCE, windowWidth]);
 
-  // NEW: Gestisci scrolling e apertura card su cambio searchQuery
+  // Gestisci scrolling e apertura card su cambio searchQuery
   useEffect(() => {
     const qTrim = searchQuery.trim();
-    if (qTrim !== '') {
-      // Trova anni unici dai filteredAuthors, ordinati
-      const matchingYears = [...new Set(filteredAuthors.map(a => a.year))].sort((a, b) => a - b);
+    if (qTrim !== "") {
+      const matchingYears = [
+        ...new Set(filteredAuthors.map((a) => a.year)),
+      ].sort((a, b) => a - b);
       if (matchingYears.length > 0) {
-        let targetYear = matchingYears[0]; // default minYear
+        let targetYear = matchingYears[0];
         const q = qTrim.toLowerCase();
         const isNumericQuery = !isNaN(q);
 
         if (!isNumericQuery) {
-          // Prioritarizza per query non numeriche (nomi): exact match, poi startsWith su name, poi fallback min
-          const exactMatch = filteredAuthors.find(a => a.name.toLowerCase() === q);
+          const exactMatch = filteredAuthors.find(
+            (a) => a.name.toLowerCase() === q
+          );
           if (exactMatch) {
             targetYear = exactMatch.year;
           } else {
-            const startMatches = filteredAuthors.filter(a => a.name.toLowerCase().startsWith(q));
+            const startMatches = filteredAuthors.filter((a) =>
+              a.name.toLowerCase().startsWith(q)
+            );
             if (startMatches.length > 0) {
               targetYear = startMatches.sort((a, b) => a.year - b.year)[0].year;
             }
-            // else: resta minYear da includes
           }
         }
 
-        const yearIndex = Math.floor((targetYear - START_YEAR_STATE) / YEAR_INTERVAL);
-        setScrollX(-yearIndex * TICK_DISTANCE + WINDOW_WIDTH / 2);
-        setClickedYear(targetYear); // Apri la card del match
+        const yearIndex = Math.floor(
+          (targetYear - START_YEAR_STATE) / YEAR_INTERVAL
+        );
+        setScrollX(-yearIndex * TICK_DISTANCE + windowWidth / 2);
+        setClickedYear(targetYear);
       }
     } else {
       // Reset a today se query vuota
-      setScrollX(-TODAY_TICK * TICK_DISTANCE + WINDOW_WIDTH / 2);
-      setClickedYear(null); // Chiudi card aperte
+      setScrollX(-TODAY_TICK * TICK_DISTANCE + windowWidth / 2);
+      setClickedYear(null);
     }
-  }, [searchQuery, filteredAuthors, START_YEAR_STATE, YEAR_INTERVAL, WINDOW_WIDTH, TODAY_TICK, TICK_DISTANCE]);
+  }, [
+    searchQuery,
+    filteredAuthors,
+    START_YEAR_STATE,
+    YEAR_INTERVAL,
+    windowWidth,
+    TODAY_TICK,
+    TICK_DISTANCE,
+  ]);
 
-  // Handle mouse events for dragging the timeline
+  // Handle mouse events per drag timeline
   const handleMouseEnter = useCallback(() => {
     if (timelineRef.current) timelineRef.current.style.cursor = "grab";
   }, []);
@@ -164,15 +187,19 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("wheel", handleMouseWheel);
     };
-  }, [handleMouseMove, handleMouseUp, handleMouseWheel, START_YEAR_STATE]);
+  }, [handleMouseMove, handleMouseUp, handleMouseWheel]);
 
+  // unified touch start that also hides the mobile hint
   const handleTouchStart = useCallback((event) => {
-    setDragStartX(event.touches[0].clientX);
+    if (event?.touches && event.touches[0]) {
+      setDragStartX(event.touches[0].clientX);
+      setShowMobileHint(false); // nasconde l'hint alla prima interazione touch
+    }
   }, []);
 
   const handleTouchMove = useCallback(
     (event) => {
-      if (DRAG_START_X !== null) {
+      if (DRAG_START_X !== null && event?.touches && event.touches[0]) {
         const delta = event.touches[0].clientX - DRAG_START_X;
         setScrollX((prevScrollX) => prevScrollX + delta);
         setDragStartX(event.touches[0].clientX);
@@ -195,9 +222,16 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
       document.removeEventListener("touchmove", handleTouchMove);
       document.removeEventListener("touchend", handleTouchEnd);
     };
-  }, [handleTouchStart, handleTouchMove, handleTouchEnd, START_YEAR_STATE]);
+  }, [handleTouchStart, handleTouchMove, handleTouchEnd]);
 
-  // Authors for currently clicked year (used for the center floating cards)
+  // window resize listener per windowWidth
+  useEffect(() => {
+    const onResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // Authors for currently clicked year (used per center floating cards)
   const centerAuthors =
     CLICKED_YEAR !== null ? filterAuthorsForYear(CLICKED_YEAR) : [];
 
@@ -260,6 +294,7 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
             onMouseDown={(e) => {
               handleMouseEnter();
               setDragStartX(e.clientX);
+              setShowMobileHint(false); // nasconde l'hint alla prima interazione mouse (utile anche su tablet)
             }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
@@ -286,11 +321,12 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
             </div>
 
             {/* Render ticks */}
-            {Array.from({ length: TOTAL_TICKS + 100 }).map((_, index) => {
+            {Array.from({ length: TOTAL_TICKS + 1 }).map((_, index) => {
               const years = START_YEAR_STATE + index * YEAR_INTERVAL;
               const leftPx = index * TICK_DISTANCE;
               const isEvent = isTickVisible(years);
-              const isSpecial = index % SPECIAL_TICK_INTERVAL === 0 && index <= TODAY_TICK;
+              const isSpecial =
+                index % SPECIAL_TICK_INTERVAL === 0 && index <= TODAY_TICK;
 
               if (!isEvent && !isSpecial) return null;
 
@@ -302,15 +338,22 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
                       top: "50%",
                       transform: "translateY(-50%)",
                     }}
-                    className={`absolute flex flex-col items-center ${isEvent ? "cursor-pointer" : ""}`}
+                    className={`absolute flex flex-col items-center ${
+                      isEvent ? "cursor-pointer" : ""
+                    }`}
                     onClick={isEvent ? () => handleTickClick(years) : null}
                     onMouseEnter={isEvent ? () => setHoveredYear(years) : null}
                     role={isEvent ? "button" : null}
                     tabIndex={isEvent ? 0 : null}
                     aria-label={isEvent ? `Tick ${years}` : null}
-                    onKeyDown={isEvent ? (e) => {
-                      if (e.key === "Enter" || e.key === " ") handleTickClick(years);
-                    } : null}
+                    onKeyDown={
+                      isEvent
+                        ? (e) => {
+                            if (e.key === "Enter" || e.key === " ")
+                              handleTickClick(years);
+                          }
+                        : null
+                    }
                   >
                     {/* tick line */}
                     <div
@@ -345,6 +388,15 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
             })}
           </div>
         </div>
+
+        {/* Mobile-only hint (posizionato sotto la timeline). Scompare alla prima interazione */}
+        {showMobileHint && (
+          <div className="md:hidden mt-4 flex justify-center">
+            <div className="text-center px-3 py-2 rounded-full bg-zinc-900/70 backdrop-blur text-sm text-zinc-200 select-none animate-slide">
+              Scorri a sinistra o a destra
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
