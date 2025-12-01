@@ -1,3 +1,8 @@
 [build]
   command = "npm run build"
   publish = "build"
+  functions = "netlify/functions"  # <-- indica la cartella delle lambda
+
+[dev]
+  command = "npm start"
+  functions = "netlify/functions"  # <-- anche in locale per netlify dev
