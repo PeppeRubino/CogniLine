@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const YouTubeSearchBox = ({ authorName }) => {
   const [videoId, setVideoId] = useState(null);
@@ -8,46 +8,63 @@ const YouTubeSearchBox = ({ authorName }) => {
     const fetchVideoId = async () => {
       try {
         if (!authorName) {
-          console.log('[YouTubeSearchBox] authorName is empty, skipping fetch.');
+          console.log(
+            "[YouTubeSearchBox] authorName is empty, skipping fetch."
+          );
           return;
         }
 
-        const url = `/.netlify/functions/youtube?query=${encodeURIComponent(authorName)}`;
-        console.log('[YouTubeSearchBox] fetching video for author:', authorName);
-        console.log('[YouTubeSearchBox] fetch URL:', url);
+        const url = `/.netlify/functions/youtube?query=${encodeURIComponent(
+          authorName
+        )}`;
+        console.log(
+          "[YouTubeSearchBox] fetching video for author:",
+          authorName
+        );
+
 
         const res = await fetch(url);
-        console.log('[YouTubeSearchBox] response status:', res.status, res.statusText);
 
         // Leggi sempre il body come text per poterlo loggare; poi prova a parsearlo in JSON.
         const text = await res.text();
-        console.log('[YouTubeSearchBox] response body (raw):', text);
+        console.log("[YouTubeSearchBox] response body (raw):", text);
 
         let data;
         try {
           data = JSON.parse(text);
-          console.log('[YouTubeSearchBox] parsed JSON response:', data);
+          console.log("[YouTubeSearchBox] parsed JSON response:", data);
         } catch (parseErr) {
           // Se non è JSON, manteniamo raw nel data per debug
-          console.warn('[YouTubeSearchBox] response is not valid JSON:', parseErr);
+          console.warn(
+            "[YouTubeSearchBox] response is not valid JSON:",
+            parseErr
+          );
           data = { raw: text };
         }
 
         if (!res.ok) {
-          console.error('[YouTubeSearchBox] Function returned non-ok status:', res.status, data);
+          console.error(
+            "[YouTubeSearchBox] Function returned non-ok status:",
+            res.status,
+            data
+          );
           throw new Error(`Server error: ${res.status}`);
         }
 
         if (!data || !data.videoId) {
-          console.warn('[YouTubeSearchBox] No videoId in response:', data);
-          throw new Error('Video non trovato o risposta malformata dalla function');
+          console.warn("[YouTubeSearchBox] No videoId in response:", data);
+          throw new Error(
+            "Video non trovato o risposta malformata dalla function"
+          );
         }
 
-        console.log('[YouTubeSearchBox] setting videoId:', data.videoId);
         setVideoId(data.videoId);
       } catch (err) {
         // Log completo per debug
-        console.error('[YouTubeSearchBox] fetchVideoId error:', err && (err.stack || err.message || err));
+        console.error(
+          "[YouTubeSearchBox] fetchVideoId error:",
+          err && (err.stack || err.message || err)
+        );
         // manteniamo il timeout che avevi per mostrare il messaggio all'utente
         setTimeout(() => setShowErrorMessage(true), 5000);
       }
@@ -61,12 +78,15 @@ const YouTubeSearchBox = ({ authorName }) => {
       {/* Messaggio di errore */}
       {showErrorMessage && (
         <div className="absolute text-center mx-2 text-white font-light">
-          <span>Errore durante il caricamento del video. <hr />Riprova più tardi.</span>
+          <span>
+            Errore durante il caricamento del video. <hr />
+            Riprova più tardi.
+          </span>
         </div>
       )}
 
       {/* Contenitore video */}
-      <div className="w-full h-full">
+      <div className="w-full h-full" aria-hidden={videoId ? false : true}>
         {videoId ? (
           <iframe
             title={`Video di ${authorName}`}
@@ -74,11 +94,14 @@ const YouTubeSearchBox = ({ authorName }) => {
             height="100%"
             src={`https://www.youtube.com/embed/${videoId}`}
             allowFullScreen
+            tabIndex={-1} // evita che l'iframe riceva focus
           />
-        ) : !showErrorMessage && (
-          <div className="flex items-center justify-center text-white font-light">
-            <p>Stiamo cercando: {authorName}</p>
-          </div>
+        ) : (
+          !showErrorMessage && (
+            <div className="flex items-center justify-center text-white font-light">
+              <p>Stiamo cercando: {authorName}</p>
+            </div>
+          )
         )}
       </div>
     </div>
