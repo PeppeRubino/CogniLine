@@ -9,6 +9,7 @@ import YouTubeSearchBox from './YouTubeSearchBox';
     - index
     - openAuthor (string or null)
     - setOpenAuthor(name|null)
+    - anchorY (optional number: absolute document Y where the timeline sits)
 */
 
 const categoryColors = {
@@ -35,6 +36,7 @@ const AuthorCard = ({
   index,
   openAuthor,
   setOpenAuthor,
+  anchorY = 0,
 }) => {
   const isClicked = openAuthor === name;
   const imagePath = `${process.env.PUBLIC_URL || ''}/media/img/${image}`;
@@ -92,7 +94,7 @@ const AuthorCard = ({
     </div>
   );
 
-  // Expanded card (new layout)
+  // Expanded card (layout: right = image+details, left = media+works on md; mobile stacks image -> details -> media -> works)
   const ExpandedCard = (
     <div
       className="
@@ -109,6 +111,8 @@ const AuthorCard = ({
       role="dialog"
       aria-modal="true"
       aria-label={`${name} — dettagli`}
+      // Ensure the inner card can scroll its content if needed
+      style={{ maxHeight: 'calc(100vh - 40px)', overflow: 'hidden' }}
     >
       {/* Close X (positioned so it won't overlap main content) */}
       <button
@@ -122,15 +126,10 @@ const AuthorCard = ({
         </svg>
       </button>
 
-      {/* Layout: mobile-first stacked, md+ two columns
-          - order on mobile: IMAGE+DETAILS (right column content), then MEDIA+WORKS (left column content)
-          - md+: left column = MEDIA+WORKS, right column = IMAGE+DETAILS
-      */}
-      <div className="flex flex-col md:flex-row">
-        {/* LEFT COLUMN on md: MEDIA + WORKS
-            On mobile this appears after the IMAGE+DETAILS (so order-2 mobile, md:order-1)
-        */}
-        <div className="md:w-1/2 order-2 md:order-1 p-6 bg-white flex flex-col gap-6">
+      {/* Layout */}
+      <div className="flex flex-col md:flex-row h-full">
+        {/* LEFT COLUMN on md: MEDIA + WORKS (order-2 on mobile) */}
+        <div className="md:w-1/2 order-2 md:order-1 p-6 bg-white flex flex-col gap-6 overflow-auto">
           {/* MEDIA */}
           <div>
             <div className="mb-2 text-zinc-700 text-sm font-semibold">Media</div>
@@ -152,10 +151,8 @@ const AuthorCard = ({
           </div>
         </div>
 
-        {/* RIGHT COLUMN on md: IMAGE + DESCRIPTIVE INFO
-            On mobile this is first (order-1 mobile, md:order-2)
-        */}
-        <div className="md:w-1/2 order-1 md:order-2 p-6 bg-zinc-50 flex flex-col gap-4">
+        {/* RIGHT COLUMN on md: IMAGE + DESCRIPTIVE INFO (order-1 on mobile) */}
+        <div className="md:w-1/2 order-1 md:order-2 p-6 bg-zinc-50 flex flex-col gap-4 overflow-auto">
           {/* IMAGE (top on mobile) */}
           <div className="w-full flex items-center justify-center">
             <img
@@ -179,16 +176,16 @@ const AuthorCard = ({
                 </div>
               </div>
 
-              {/* Year: keep visible on all viewports; positioned to the right on md */}
+              {/* Year */}
               <div className="text-zinc-500 text-sm font-medium">{year}</div>
             </div>
 
-            {/* Description + details combined */}
+            {/* Description + details */}
             <div className="text-zinc-700 text-sm leading-relaxed max-h-44 overflow-auto pr-2">
               {description}
             </div>
 
-            {/* Additional compact details (redundant on md but useful on mobile) */}
+            {/* Additional compact details */}
             <div className="text-zinc-600 text-sm flex flex-col gap-1">
               {specialized && (
                 <div>
@@ -214,15 +211,78 @@ const AuthorCard = ({
     </div>
   );
 
-  // If clicked -> render portal with overlay + centered card
+  // If clicked -> render portal with overlay + wrapper posizionato rispetto ad anchorY
   if (isClicked && typeof document !== 'undefined') {
+    // Decide positioning: mobile -> align to top (under timeline) and allow scroll;
+    // desktop -> center vertically.
+    let outerStyle = {
+      position: 'fixed',
+      inset: 0,
+      zIndex: 9999,
+      display: 'flex',
+      justifyContent: 'center',
+      // default center
+      alignItems: 'center',
+      overflowY: 'auto',
+      WebkitOverflowScrolling: 'touch',
+    };
+
+    let innerWrapperStyle = {
+      // this wrapper constrains the ExpandedCard and enables internal scrolling if needed
+      display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+      boxSizing: 'border-box',
+      paddingLeft: '16px',
+      paddingRight: '16px',
+      paddingBottom: '24px',
+      paddingTop: '24px',
+    };
+
+    if (isMobile) {
+      // on mobile position under timeline using anchorY -> convert to viewport offset
+      try {
+        const viewportOffset = Math.max(anchorY - window.scrollY, 0);
+        // add a small offset so card doesn't overlap the line exactly
+        const paddingTopPx = Math.max(viewportOffset + 12, 8);
+        outerStyle.alignItems = 'flex-start';
+        outerStyle.paddingTop = `${paddingTopPx}px`;
+        // ensure outer allows scrolling if content is taller than viewport
+        outerStyle.overflowY = 'auto';
+        innerWrapperStyle.paddingTop = '8px';
+        // container that holds the ExpandedCard must allow vertical scrolling within viewport
+      } catch (e) {
+        // fallback: keep alignItems flex-start
+        outerStyle.alignItems = 'flex-start';
+        outerStyle.paddingTop = '12px';
+      }
+    } else {
+      // desktop: ensure centered and no large top padding
+      outerStyle.alignItems = 'center';
+      outerStyle.paddingTop = '0px';
+    }
+
+    // ensure the content wrapper enforces max height and scroll
+    const contentContainerStyle = {
+      maxHeight: 'calc(100vh - 40px)',
+      overflowY: 'auto',
+      WebkitOverflowScrolling: 'touch',
+      display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+    };
+
     return createPortal(
-      <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+      <div style={outerStyle}>
         {/* backdrop */}
         <div className="absolute inset-0 bg-black/65" onClick={close} />
 
-        {/* centered wrapper: w-auto so card width controls itself */}
-        <div className="relative z-10 px-4 py-6 w-auto flex justify-center">{ExpandedCard}</div>
+        {/* inner wrapper provides side padding + vertical constraints */}
+        <div style={innerWrapperStyle} className="relative z-10">
+          <div style={contentContainerStyle}>
+            {ExpandedCard}
+          </div>
+        </div>
       </div>,
       document.body
     );

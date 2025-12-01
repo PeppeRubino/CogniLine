@@ -16,8 +16,9 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
   const YEAR_INTERVAL = 1;
   const SPECIAL_TICK_INTERVAL = 100;
 
-  // Ref for the timeline
+  // Refs
   const timelineRef = useRef(null);
+  const timelineContainerRef = useRef(null); // <--- nuovo ref per container timeline
 
   // State variables
   const [DRAG_START_X, setDragStartX] = useState(null);
@@ -29,15 +30,18 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
   const [HOVERED_YEAR, setHoveredYear] = useState(null);
   const [openAuthor, setOpenAuthor] = useState(null);
 
-  // Mobile hint (mostra su mobile finché l'utente non interagisce)
+  // Mobile hint
   const [showMobileHint, setShowMobileHint] = useState(true);
 
-  // Window width reattivo (utile per centrare lo scroll su resize/rotazione)
+  // Window width reattivo
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
   );
 
-  // Calcola autori filtrati una volta sola (performance)
+  // <-- NEW: timeline top (distanza dal top della pagina, in px)
+  const [timelineTop, setTimelineTop] = useState(0);
+
+  // Calcola autori filtrati
   const filteredAuthors = useMemo(() => {
     let list = authorsData;
 
@@ -231,20 +235,42 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  // <-- NEW: calcola timelineTop (aggiorna anche on resize/scroll)
+  useEffect(() => {
+    const computeTop = () => {
+      try {
+        if (timelineContainerRef.current) {
+          const rect = timelineContainerRef.current.getBoundingClientRect();
+          // top relativo al documento (perché il portal è in body)
+          setTimelineTop(rect.top + window.scrollY);
+        }
+      } catch (e) {
+        // fallback innocuo
+        setTimelineTop(0);
+      }
+    };
+
+    computeTop();
+    window.addEventListener("resize", computeTop);
+    window.addEventListener("scroll", computeTop, { passive: true });
+    return () => {
+      window.removeEventListener("resize", computeTop);
+      window.removeEventListener("scroll", computeTop);
+    };
+  }, []);
+
   // Authors for currently clicked year (used per center floating cards)
   const centerAuthors =
     CLICKED_YEAR !== null ? filterAuthorsForYear(CLICKED_YEAR) : [];
 
   return (
     <div className="relative w-full flex justify-center items-start pt-24 mt-14 pb-10">
-      {/* Decorative hero area (background subtle gradient to match header) */}
+      {/* Decorative hero area */}
       <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-zinc-900 to-zinc-800 opacity-80" />
 
       <div className="w-full max-w-6xl px-4 md:px-6 lg:px-8 relative">
-        {/* Floating center cards shown above the marker when a year is clicked */}
+        {/* Floating center cards */}
         <div className="relative">
-          {/* container remains pointer-events-none so timeline clicks still work;
-              each child uses pointer-events-auto so it can receive clicks */}
           <div
             className="absolute left-1/2 -translate-x-1/2 -top-28 z-40 flex items-end gap-6 pointer-events-none"
             aria-hidden
@@ -252,6 +278,7 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
             {centerAuthors.length > 0 ? (
               centerAuthors.map((author, i) => (
                 <div key={i} className="pointer-events-auto select-none">
+                  {/* Passiamo anchorY (= timelineTop) ad AuthorCard */}
                   <AuthorCard
                     name={author.name}
                     category={author.category}
@@ -264,6 +291,7 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
                     index={i}
                     openAuthor={openAuthor}
                     setOpenAuthor={setOpenAuthor}
+                    anchorY={timelineTop} // <-- nuovo prop
                   />
                 </div>
               ))
@@ -273,7 +301,7 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
           </div>
         </div>
 
-        {/* Central marker (fixed over the timeline, white circle) */}
+        {/* Central marker */}
         <div className="absolute left-1/2 -translate-x-1/2 top-28 z-50 flex flex-col items-center">
           <div
             className="w-5 h-5 rounded-full bg-white shadow-[0_8px_20px_rgba(0,0,0,0.45)]"
@@ -282,19 +310,22 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
           <div className="mt-3 text-zinc-400 text-sm">{CLICKED_YEAR ?? ""}</div>
         </div>
 
-        {/* Timeline container */}
-        <div className="relative mt-20 h-24 flex items-center">
+        {/* Timeline container (attach ref for top calculation) */}
+        <div
+          ref={timelineContainerRef}
+          className="relative mt-20 h-24 flex items-center"
+        >
           {/* baseline line */}
           <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-1 bg-zinc-700 rounded-full z-10" />
 
-          {/* ticks wrapper (wide, horizontally scrollable via transform) */}
+          {/* ticks wrapper */}
           <div
             ref={timelineRef}
             onMouseEnter={handleMouseEnter}
             onMouseDown={(e) => {
               handleMouseEnter();
               setDragStartX(e.clientX);
-              setShowMobileHint(false); // nasconde l'hint alla prima interazione mouse (utile anche su tablet)
+              setShowMobileHint(false);
             }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
@@ -308,7 +339,7 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
                 DRAG_START_X === null ? "transform 0.12s ease-out" : "none",
             }}
           >
-            {/* Today's vertical marker on the timeline (in-track) */}
+            {/* Today's vertical marker */}
             <div
               className="absolute"
               style={{
@@ -389,7 +420,7 @@ const Timeline = ({ selectedYear, selectedAuthor, searchQuery }) => {
           </div>
         </div>
 
-        {/* Mobile-only hint (posizionato sotto la timeline). Scompare alla prima interazione */}
+        {/* Mobile-only hint */}
         {showMobileHint && (
           <div className="md:hidden mt-4 flex justify-center">
             <div className="text-center px-3 py-2 rounded-full bg-zinc-900/70 backdrop-blur text-sm text-zinc-200 select-none animate-slide">

@@ -8,7 +8,7 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <div className="App w-screen h-screen bg-gray-200 overflow-hidden relative select-none">
+    <div className="App w-screen h-screen bg-gray-200 overflow-hidden relative  select-none">
 
       <Header
         onFilterAuthor={setSelectedAuthor}
