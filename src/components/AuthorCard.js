@@ -1,4 +1,3 @@
-// AuthorCard.js
 import React, { useCallback, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import YouTubeSearchBox from './YouTubeSearchBox';
@@ -13,15 +12,15 @@ import YouTubeSearchBox from './YouTubeSearchBox';
 */
 
 const categoryColors = {
-  Neuroscienze: 'rgba(70, 130, 180, 0.75)',  // Blu acciaio tenue, per evocare scienza e mente
-  Psicologia: 'rgba(85, 107, 47, 0.75)',     // Verde oliva muta, calmo e introspettivo
-  Medicina: 'rgba(143, 188, 143, 0.75)',     // Verde salvia soft, salutare ma non vivace
-  Filosofia: 'rgba(105, 105, 105, 0.75)',    // Grigio scuro classico, saggio e neutro
-  Metafisica: 'rgba(100, 149, 237, 0.75)',   // Blu cornflower tenue, etereo
-  Sociologia: 'rgba(139, 0, 139, 0.7)',      // Viola prugna muta, sociale e riflessivo
-  Pedagogia: 'rgba(218, 165, 32, 0.75)',     // Oro antico soft, educativo e caldo
-  Fisiologia: 'rgba(184, 134, 11, 0.75)',    // Giallo senape tenue, vitale ma discreto
-  default: 'rgba(128, 128, 128, 0.75)',      // Grigio medio, per fallback neutro
+  Neuroscienze: 'rgba(70, 130, 180, 0.75)',
+  Psicologia: 'rgba(85, 107, 47, 0.75)',
+  Medicina: 'rgba(143, 188, 143, 0.75)',
+  Filosofia: 'rgba(105, 105, 105, 0.75)',
+  Metafisica: 'rgba(100, 149, 237, 0.75)',
+  Sociologia: 'rgba(139, 0, 139, 0.7)',
+  Pedagogia: 'rgba(218, 165, 32, 0.75)',
+  Fisiologia: 'rgba(184, 134, 11, 0.75)',
+  default: 'rgba(128, 128, 128, 0.75)',
 };
 
 const AuthorCard = ({
@@ -71,7 +70,7 @@ const AuthorCard = ({
     return () => document.removeEventListener('keydown', onKey);
   }, [isClicked, close]);
 
-  // Compact thumbnail
+  // Compact thumbnail (unchanged)
   const Compact = (
     <div
       className="w-28 cursor-pointer rounded-xl overflow-hidden transform hover:scale-105 transition-all duration-150 shadow-sm"
@@ -93,12 +92,12 @@ const AuthorCard = ({
     </div>
   );
 
-  // Expanded card (panel content)
+  // Expanded card (new layout)
   const ExpandedCard = (
     <div
       className="
         relative
-        w-[92vw] sm:w-[75vw] md:w-[64vw] lg:w-[56vw]
+        w-[92vw] sm:w-[78vw] md:w-[80vw] lg:w-[70vw]
         max-w-[1000px]
         min-w-[320px]
         rounded-2xl
@@ -111,11 +110,11 @@ const AuthorCard = ({
       aria-modal="true"
       aria-label={`${name} — dettagli`}
     >
-      {/* close X (top-right) */}
+      {/* Close X (positioned so it won't overlap main content) */}
       <button
         onClick={close}
         aria-label="Chiudi"
-        className="absolute right-4 top-4 z-20 rounded-full p-1 hover:bg-zinc-100"
+        className="absolute right-3 top-3 z-40 rounded-full p-1 hover:bg-zinc-100"
         style={{ background: 'transparent' }}
       >
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -123,47 +122,95 @@ const AuthorCard = ({
         </svg>
       </button>
 
+      {/* Layout: mobile-first stacked, md+ two columns
+          - order on mobile: IMAGE+DETAILS (right column content), then MEDIA+WORKS (left column content)
+          - md+: left column = MEDIA+WORKS, right column = IMAGE+DETAILS
+      */}
       <div className="flex flex-col md:flex-row">
-        {/* LEFT */}
-        <div className="md:w-1/2 p-6 flex flex-col gap-6 bg-zinc-50">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <h3 className="text-zinc-900 font-semibold text-lg tracking-tight">{name}</h3>
-              {specialized && <div className="text-zinc-600 text-sm mt-1">{specialized}</div>}
+        {/* LEFT COLUMN on md: MEDIA + WORKS
+            On mobile this appears after the IMAGE+DETAILS (so order-2 mobile, md:order-1)
+        */}
+        <div className="md:w-1/2 order-2 md:order-1 p-6 bg-white flex flex-col gap-6">
+          {/* MEDIA */}
+          <div>
+            <div className="mb-2 text-zinc-700 text-sm font-semibold">Media</div>
+            <div className="w-full h-44 rounded-md overflow-hidden shadow-sm">
+              <YouTubeSearchBox authorName={name} />
             </div>
-            <div className="text-zinc-500 text-sm font-medium">{year}</div>
           </div>
 
-          <div className="w-full flex items-center justify-center">
-            <img src={imagePath} alt={name} className="max-h-44 object-contain rounded-md shadow-sm" style={{ maxWidth: isMobile ? '86vw' : '100%' }} />
-          </div>
-
+          {/* WORKS */}
           <div>
             <h4 className="text-zinc-800 font-semibold text-sm mb-2">Opere</h4>
-            <ul className="list-disc list-inside text-zinc-700 text-sm space-y-1 max-h-36 overflow-auto pr-2">
-              {works.map((w, i) => (
-                <li key={i}>{w}</li>
-              ))}
+            <ul className="list-disc list-inside text-zinc-700 text-sm space-y-1 max-h-48 overflow-auto pr-2">
+              {works.length > 0 ? (
+                works.map((w, i) => <li key={i}>{w}</li>)
+              ) : (
+                <li className="text-zinc-500">Nessuna opera elencata</li>
+              )}
             </ul>
           </div>
-
-          <div className="mt-2 text-zinc-700 text-sm leading-relaxed max-h-36 overflow-auto pr-2">{description}</div>
         </div>
 
-        {/* RIGHT */}
-        <div className="md:w-1/2 p-6 border-t md:border-t-0 md:border-l border-zinc-200/40 bg-white">
-          <div className="mb-2 text-zinc-700 text-sm font-semibold">Media</div>
-          <div className="w-full h-44 rounded-md overflow-hidden shadow-sm">
-            <YouTubeSearchBox authorName={name} />
+        {/* RIGHT COLUMN on md: IMAGE + DESCRIPTIVE INFO
+            On mobile this is first (order-1 mobile, md:order-2)
+        */}
+        <div className="md:w-1/2 order-1 md:order-2 p-6 bg-zinc-50 flex flex-col gap-4">
+          {/* IMAGE (top on mobile) */}
+          <div className="w-full flex items-center justify-center">
+            <img
+              src={imagePath}
+              alt={name}
+              className="w-full max-h-64 object-contain rounded-md shadow-sm"
+              style={{ maxWidth: isMobile ? '92vw' : '100%' }}
+            />
           </div>
 
-          <div className="mt-4">
-            <div className="inline-block rounded-md px-3 py-2 text-white text-xs font-medium" style={{ background: accent }}>
-              {category}
+          {/* Descriptive info (below image on mobile, right of image on md) */}
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-start gap-3">
+                <div className="flex flex-col">
+                  <h3 className="text-zinc-900 font-semibold text-lg tracking-tight">{name}</h3>
+                  {specialized && <div className="text-zinc-600 text-sm mt-1">{specialized}</div>}
+                </div>
+                <div className="inline-block rounded-md px-2 py-1 text-white text-xs font-medium self-start" style={{ background: accent }}>
+                  {category}
+                </div>
+              </div>
+
+              {/* Year: keep visible on all viewports; positioned to the right on md */}
+              <div className="text-zinc-500 text-sm font-medium">{year}</div>
+            </div>
+
+            {/* Description + details combined */}
+            <div className="text-zinc-700 text-sm leading-relaxed max-h-44 overflow-auto pr-2">
+              {description}
+            </div>
+
+            {/* Additional compact details (redundant on md but useful on mobile) */}
+            <div className="text-zinc-600 text-sm flex flex-col gap-1">
+              {specialized && (
+                <div>
+                  <span className="font-semibold">Specializzazione: </span>
+                  <span>{specialized}</span>
+                </div>
+              )}
+              <div>
+                <span className="font-semibold">Categoria: </span>
+                <span>{category}</span>
+              </div>
+              <div>
+                <span className="font-semibold">Anno: </span>
+                <span>{year}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Footnote reminder */}
+      <div className="px-6 pb-6 pt-2 text-zinc-500 text-xs">Clicca fuori per chiudere o premi Esc</div>
     </div>
   );
 
